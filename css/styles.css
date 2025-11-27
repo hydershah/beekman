@@ -32,7 +32,7 @@
   /* Layout */
   --container-width: 1200px;
   --header-height: 72px;
-  --section-padding: 140px;
+  --section-padding: 100px;
   --radius: 12px;
   --radius-lg: 20px;
 
@@ -133,6 +133,14 @@ ul {
 .text-muted {
   color: var(--text-muted);
   display: block;
+}
+
+/* Inline titles for specific sections */
+.case-studies .section-title .text-primary,
+.case-studies .section-title .text-muted,
+.cta-section .section-title .text-primary,
+.cta-section .section-title .text-muted {
+  display: inline;
 }
 
 .section-label {
@@ -903,7 +911,7 @@ ul {
 .section-header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 100px;
+  margin: 0 auto 60px;
 }
 
 .section-grid {
@@ -2143,7 +2151,7 @@ ul {
 
 /* Reduce spacing between Why section and Case Studies */
 .case-studies {
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 /* --------------------------------------------------------------------------
