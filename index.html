@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beekman Strategic — Tradition Meets Innovation</title>
+  <meta name="description" content="Independent financial advisory and investment banking for the global elite. We combine 23 years of private banking discipline with AI-powered solutions.">
+
+  <!-- Fonts: Plus Jakarta Sans (distinct from Acquinox) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Theme Toggle & Language Selector in Header -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark"></span>
+        <span class="logo-text">Beekman Strategic</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#about" data-i18n="nav.about">The Firm</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
+        <a href="#insights" data-i18n="nav.insights">Insights</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn" aria-label="Select language">
+            <span id="currentLang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button data-lang="en" class="active">English</button>
+            <button data-lang="es">Español</button>
+            <button data-lang="fr">Français</button>
+            <button data-lang="pt">Português</button>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="https://email.beekmanstrategic.com" class="btn btn-secondary header-cta-secondary" data-i18n="nav.portal" target="_blank">Client Portal</a>
+        <a href="#contact" class="btn btn-primary header-cta" data-i18n="nav.cta">Schedule Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <!-- Particles -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <!-- Data Streams -->
+    <div class="data-streams">
+      <div class="data-stream"></div>
+      <div class="data-stream"></div>
+      <div class="data-stream"></div>
+      <div class="data-stream"></div>
+      <div class="data-stream"></div>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Tradition Meets Innovation</p>
+        <h1 class="hero-title">
+          <span class="text-primary" data-i18n="hero.title1">Where Goals</span>
+          <span class="text-muted" data-i18n="hero.title2">Become Reality.</span>
+        </h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Independent financial advisory and investment banking for the global elite. We translate your ambition into executable financial structures.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Schedule a Consultation</a>
+          <a href="#services" class="btn btn-secondary" data-i18n="hero.cta2">Explore Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value" data-count="500">$500M+</span>
+            <span class="stat-label" data-i18n="hero.stat1">Structured Products</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" data-count="35">35+</span>
+            <span class="stat-label" data-i18n="hero.stat2">Global Issuers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">23yr</span>
+            <span class="stat-label" data-i18n="hero.stat3">Institutional Experience</span>
+          </div>
+        </div>
+      </div>
+      <!-- Hero Visual - Rings Animation -->
+      <div class="hero-visual">
+        <div class="hero-orb"></div>
+        <div class="hero-rings">
+          <div class="hero-ring"></div>
+          <div class="hero-ring"></div>
+          <div class="hero-ring"></div>
+          <div class="hero-ring"></div>
+          <div class="hero-center">
+            <span class="hero-center-icon">B</span>
+          </div>
+        </div>
+        <div class="hero-data-points">
+          <div class="hero-data-point"><span>Asset & Wealth</span></div>
+          <div class="hero-data-point"><span>Investment Banking</span></div>
+          <div class="hero-data-point"><span>Fund Structuring</span></div>
+          <div class="hero-data-point"><span>AI Advisory</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="container">
+      <span class="trust-label" data-i18n="trust.label">Global Presence Across Financial Centers</span>
+      <div class="trust-logos">
+        <span>New York</span>
+        <span>Miami</span>
+        <span>London</span>
+        <span>Zurich</span>
+        <span>Monaco</span>
+        <span>Luxembourg</span>
+        <span>Singapore</span>
+        <span>Dubai</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section - The Firm -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-grid">
+        <div class="section-content reveal">
+          <span class="section-label" data-i18n="about.label">The Firm</span>
+          <h2 class="section-title">
+            <span class="text-primary" data-i18n="about.title1">The Beekman</span>
+            <span class="text-muted" data-i18n="about.title2">Difference</span>
+          </h2>
+          <p class="section-desc" data-i18n="about.desc">
+            Beekman Strategic is a boutique financial advisory firm with a dual identity. We merge the high-touch, relationship-first approach of traditional private banking with the speed and precision of modern investment banking. Our greatest differentiator is our ability to truly understand our clients' long-term vision—and then translate those insights into practical tools, structures, and investment vehicles.
+          </p>
+          <ul class="feature-list">
+            <li data-i18n="about.feature1">Principal-Led: Clients work directly with principals, not junior associates</li>
+            <li data-i18n="about.feature2">Network-Backed: Access to 35+ top-tier global issuers and legal partners</li>
+            <li data-i18n="about.feature3">Technology-Driven: Beekman AI enhances structure design with advanced automation</li>
+            <li data-i18n="about.feature4">Global Footprint: Experience across 8 international financial centers</li>
+          </ul>
+        </div>
+        <div class="section-visual reveal">
+          <div class="globe-card">
+            <div class="globe-container">
+              <!-- WebGL Globe using Cobe -->
+              <canvas id="globeCanvas" class="globe-canvas" width="800" height="800" style="width: 400px; height: 400px;"></canvas>
+            </div>
+
+            <span class="globe-label" data-i18n="about.visual">Global Financial Centers</span>
+            <div class="globe-legend">
+              <span>NY</span><span>MIA</span><span>LON</span><span>ZUR</span><span>MON</span><span>LUX</span><span>SIN</span><span>DXB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Serve Section -->
+  <section class="section clients-section bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="clients.label">Who We Serve</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="clients.title1">Sophisticated clients</span>
+          <span class="text-muted" data-i18n="clients.title2">demand sophisticated solutions</span>
+        </h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-num">01</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 data-i18n="clients.c1.title">Ultra-High-Net-Worth Individuals</h3>
+          <p data-i18n="clients.c1.desc">Clients with $30M+ seeking complex cross-border structuring, privacy, and access to institutional-grade products typically reserved for banks.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">02</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
+            </svg>
+          </div>
+          <h3 data-i18n="clients.c2.title">Entrepreneurs & Business Owners</h3>
+          <p data-i18n="clients.c2.desc">Visionaries seeking pre-liquidity planning, securitization of business assets, and strategic capital raising.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">03</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/>
+            </svg>
+          </div>
+          <h3 data-i18n="clients.c3.title">Multigenerational Families</h3>
+          <p data-i18n="clients.c3.desc">Families requiring governance frameworks to preserve legacy and educate the next generation across borders.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">04</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="clients.c4.title">International Clients</h3>
+          <p data-i18n="clients.c4.desc">Families in Latin America and Europe seeking access to US markets, currency hedging, and political risk mitigation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="services.label">Our Services</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="services.title1">We don't just advise—</span>
+          <span class="text-muted" data-i18n="services.title2">we engineer solutions</span>
+        </h2>
+        <p class="section-desc" data-i18n="services.desc">
+          Beekman Strategic acts as the bridge between private clients and institutional markets. We design, structure, and execute sophisticated cross-border strategies.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-num">01</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 data-i18n="services.s1.title">Asset & Wealth Management</h3>
+          <span class="service-tagline" data-i18n="services.s1.tagline">Clarity, Protection, and Legacy.</span>
+          <p data-i18n="services.s1.desc">Strategic wealth planning, global portfolio oversight, legacy structuring, risk management, and family-office advisory. Clarity, protection, and legacy across jurisdictions.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">02</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
+            </svg>
+          </div>
+          <h3 data-i18n="services.s2.title">Investment Banking</h3>
+          <span class="service-tagline" data-i18n="services.s2.tagline">Boutique banking for the private world.</span>
+          <p data-i18n="services.s2.desc">Bespoke financial instruments, liquidity solutions, capital markets advisory, and asset transformation. Turning illiquid assets into bankable securities.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">03</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/>
+            </svg>
+          </div>
+          <h3 data-i18n="services.s3.title">Fund & Vehicle Structuring</h3>
+          <span class="service-tagline" data-i18n="services.s3.tagline">Engineering institutional-grade products.</span>
+          <p data-i18n="services.s3.desc">Vehicle architecture for SPVs, LPs, LLPs, and bespoke frameworks. Capital raise support, launch coordination, and ongoing advisory for institutional-grade products.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">04</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 8V4H8"/><rect x="5" y="8" width="14" height="12" rx="2"/><path d="M9 12h0"/><path d="M15 12h0"/><path d="M10 16h4"/>
+            </svg>
+          </div>
+          <h3 data-i18n="services.s4.title">Powered by Beekman AI</h3>
+          <p data-i18n="services.s4.desc">Proprietary AI solutions that modernize the structuring process—ensuring speed, accuracy, and a seamless digital experience. From months to days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise / Process Section -->
+  <section class="section process" id="expertise">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="process.label">Our Approach</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="process.title1">The Translation</span>
+          <span class="text-muted" data-i18n="process.title2">Process</span>
+        </h2>
+        <p class="section-desc" data-i18n="process.desc">
+          We turn intent into impact. A systematic methodology that transforms your vision into executable structures with precision and efficiency.
+        </p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-marker">01</div>
+          <h3 data-i18n="process.step1.title">Objective Definition</h3>
+          <p data-i18n="process.step1.desc">We articulate your ambitions and identify regulatory, tax, or operational constraints that inform the optimal path forward.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-marker">02</div>
+          <h3 data-i18n="process.step2.title">Jurisdiction Analysis</h3>
+          <p data-i18n="process.step2.desc">We select the optimal domicile—Delaware, Luxembourg, UK, Switzerland—based on your specific goals and circumstances.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-marker">03</div>
+          <h3 data-i18n="process.step3.title">Entity Structuring</h3>
+          <p data-i18n="process.step3.desc">We layer legal entities and governance frameworks to ensure protection, efficiency, and alignment with your objectives.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-marker">04</div>
+          <h3 data-i18n="process.step4.title">Implementation</h3>
+          <p data-i18n="process.step4.desc">We handle formation, banking setup, and regulatory approvals for a seamless launch with ongoing governance support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <span class="stat-value">$500M+</span>
+          <span class="stat-label" data-i18n="stats.stat1">Structured Products</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">$300M+</span>
+          <span class="stat-label" data-i18n="stats.stat2">Qualified from Investors</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">35+</span>
+          <span class="stat-label" data-i18n="stats.stat3">Top-Tier Global Issuers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">23yr</span>
+          <span class="stat-label" data-i18n="stats.stat4">Institutional Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section class="section why-us">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="why.label">Our Philosophy</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="why.title1">Human oversight</span>
+          <span class="text-muted" data-i18n="why.title2">on a digital machine</span>
+        </h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h3 data-i18n="why.card1.title">Principal-Led Execution</h3>
+          <p data-i18n="why.card1.desc">Clients work directly with senior operators, not junior associates. Direct accountability and institutional expertise from the first conversation to final implementation.</p>
+        </div>
+        <div class="why-card reveal">
+          <h3 data-i18n="why.card2.title">AI-Enhanced Efficiency</h3>
+          <p data-i18n="why.card2.desc">Our proprietary AI legal engines and financial agents compress timelines from months to days—enabling rapid structuring without compromising institutional rigor.</p>
+        </div>
+        <div class="why-card reveal">
+          <h3 data-i18n="why.card3.title">Global Partner Ecosystem</h3>
+          <p data-i18n="why.card3.desc">We wield the power of a global institution through our curated network of issuers, administrators, custodians, and legal partners across eight financial centers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="section case-studies">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="cases.label">Track Record</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="cases.title1">Proof of</span>
+          <span class="text-muted" data-i18n="cases.title2">Impact</span>
+        </h2>
+        <p class="section-desc" data-i18n="cases.desc">
+          Select examples of how we've translated ambitious visions into structured, investable realities across borders.
+        </p>
+      </div>
+
+      <div class="cases-grid">
+        <div class="case-card reveal">
+          <div class="case-header">
+            <span class="case-tag" data-i18n="cases.case1.tag">Sustainability</span>
+            <span class="case-value">$100M</span>
+          </div>
+          <h3 data-i18n="cases.case1.title">Amazon Carbon Credit Securitization</h3>
+          <p data-i18n="cases.case1.desc">Structured carbon credit emissions from the Colombian Amazon into a Swiss-listed bond, creating a liquid, institutional-grade security from an environmental asset. A landmark transaction bridging sustainability and capital markets.</p>
+          <div class="case-meta">
+            <span data-i18n="cases.case1.location">Colombia → Switzerland</span>
+          </div>
+        </div>
+
+        <div class="case-card reveal">
+          <div class="case-header">
+            <span class="case-tag" data-i18n="cases.case2.tag">Social Impact</span>
+            <span class="case-value">1.3M+</span>
+          </div>
+          <h3 data-i18n="cases.case2.title">Free Trade Zone Healthcare Clinic</h3>
+          <p data-i18n="cases.case2.desc">Structured and launched a healthcare facility within a Colombian Free Trade Zone, serving over 1.3 million people. Demonstrated how sophisticated structuring can drive both returns and meaningful social impact.</p>
+          <div class="case-meta">
+            <span data-i18n="cases.case2.location">Colombia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="section leadership-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="team.label">Leadership</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="team.title1">The Team</span>
+          <span class="text-muted" data-i18n="team.title2">Behind the Strategy</span>
+        </h2>
+        <p class="section-desc" data-i18n="team.desc">
+          A lean team of senior operators backed by a massive global network. Like special forces in finance—small team, massive impact through strategic partnerships.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </div>
+          <h3 data-i18n="team.member1.name">Oscar Libreros</h3>
+          <span class="team-role" data-i18n="team.member1.role">Founder & Principal</span>
+          <p data-i18n="team.member1.bio">23 years of institutional experience spanning Société Générale and elite private banking. Specializes in cross-border structuring, capital markets, and translating complex client visions into executable financial architectures.</p>
+        </div>
+
+        <div class="team-card ecosystem-card reveal">
+          <div class="team-avatar ecosystem-avatar">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="team.ecosystem.title">The Ecosystem</h3>
+          <span class="team-role" data-i18n="team.ecosystem.role">Global Partner Network</span>
+          <p data-i18n="team.ecosystem.desc">While our core team is lean, our network is massive. We operate like special forces—a small, elite team that leverages strategic partnerships with 35+ global issuers, legal experts, and administrators to deliver institutional-scale impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights Section -->
+  <section class="section insights bg-alt" id="insights">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="insights.label">Perspectives</span>
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="insights.title1">Strategic insights</span>
+          <span class="text-muted" data-i18n="insights.title2">for global markets</span>
+        </h2>
+        <p class="section-desc" data-i18n="insights.desc">
+          Navigating the complexities of global finance requires more than data—it requires perspective. Explore the latest thinking from the Beekman Strategic team.
+        </p>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight-card reveal">
+          <span class="insight-tag">Featured</span>
+          <h3 data-i18n="insights.article1.title">The Evolution of the Family Office</h3>
+          <p data-i18n="insights.article1.desc">How modern families are integrating AI with traditional governance to manage multi-jurisdictional assets and preserve legacy.</p>
+        </div>
+        <div class="insight-card reveal">
+          <span class="insight-tag">Analysis</span>
+          <h3 data-i18n="insights.article2.title">Swiss Securities vs. NYSE Listings</h3>
+          <p data-i18n="insights.article2.desc">A comparative analysis of structuring options for international clients seeking capital market access.</p>
+        </div>
+        <div class="insight-card reveal">
+          <span class="insight-tag">Strategy</span>
+          <h3 data-i18n="insights.article3.title">Efficient Pre-IPO Structuring</h3>
+          <p data-i18n="insights.article3.desc">Best practices for entrepreneurs preparing for public markets while optimizing tax efficiency and governance.</p>
+        </div>
+      </div>
+
+      <!-- Media & Press -->
+      <div class="media-section reveal">
+        <h3 data-i18n="media.title">Beekman in the Media</h3>
+        <p data-i18n="media.desc">Featured coverage and industry recognition. More press mentions coming soon.</p>
+        <div class="media-placeholder">
+          <span data-i18n="media.coming">Press coverage coming soon</span>
+        </div>
+      </div>
+
+      <!-- Newsletter Subscription -->
+      <div class="newsletter-section reveal">
+        <div class="newsletter-content">
+          <h3 data-i18n="newsletter.title">Stay Informed</h3>
+          <p data-i18n="newsletter.desc">Receive our latest market insights and structuring strategies directly to your inbox.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" name="email" placeholder="Enter your email" data-i18n-placeholder="newsletter.placeholder" required>
+          <button type="submit" class="btn btn-primary" data-i18n="newsletter.btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2 class="section-title">
+          <span class="text-primary" data-i18n="cta.title1">Let's translate your ambition</span>
+          <span class="text-muted" data-i18n="cta.title2">into reality</span>
+        </h2>
+        <p data-i18n="cta.desc">Schedule a confidential consultation with our principals to discuss your objectives and explore how we can help.</p>
+        <a href="#contact" class="btn btn-primary btn-lg" data-i18n="cta.btn">Schedule a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-label" data-i18n="contact.label">Contact</span>
+          <h2 class="section-title">
+            <span class="text-primary" data-i18n="contact.title1">Start the</span>
+            <span class="text-muted" data-i18n="contact.title2">conversation</span>
+          </h2>
+          <p class="section-desc" data-i18n="contact.desc">Ready to discuss how Beekman Strategic can serve your objectives? Connect directly with our principals for a confidential consultation.</p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/>
+                </svg>
+              </div>
+              <div>
+                <strong data-i18n="contact.email">Email</strong>
+                <span>info@beekmanstrategic.com</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <strong data-i18n="contact.location">Headquarters</strong>
+                <span>Boca Raton, Florida</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+              </div>
+              <div>
+                <strong data-i18n="contact.global">Global Network</strong>
+                <span>Partners across 8 financial centers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Name" data-i18n-placeholder="form.name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" data-i18n-placeholder="form.email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Phone" data-i18n-placeholder="form.phone">
+            </div>
+            <div class="form-group">
+              <input type="text" name="company" placeholder="Company" data-i18n-placeholder="form.company">
+            </div>
+          </div>
+          <div class="form-group">
+            <select name="interest">
+              <option value="" disabled selected data-i18n="form.interest">Area of Interest</option>
+              <option value="wealth">Asset & Wealth Management</option>
+              <option value="banking">Investment Banking</option>
+              <option value="structuring">Fund & Vehicle Structuring</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Tell us about your objectives" data-i18n-placeholder="form.message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" data-i18n="form.submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-mark"></span>
+            <span class="logo-text">Beekman Strategic</span>
+          </a>
+          <p data-i18n="footer.desc">Independent financial advisory and investment banking. Tradition meets innovation—where goals become reality.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.services">Services</h4>
+          <ul>
+            <li><a href="#services" data-i18n="services.s1.title">Asset & Wealth Management</a></li>
+            <li><a href="#services" data-i18n="services.s2.title">Investment Banking</a></li>
+            <li><a href="#services" data-i18n="services.s3.title">Fund & Vehicle Structuring</a></li>
+            <li><a href="#services" data-i18n="services.s4.title">Powered by Beekman AI</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">The Firm</a></li>
+            <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
+            <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.locations">Global Presence</h4>
+          <ul>
+            <li>New York • Miami</li>
+            <li>London • Zurich</li>
+            <li>Monaco • Luxembourg</li>
+            <li>Singapore • Dubai</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Beekman Strategic. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <div class="footer-legal">
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
+          <a href="#" data-i18n="footer.disclosures">Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/globe.js"></script>
+</body>
+</html>
