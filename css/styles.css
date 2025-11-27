@@ -292,19 +292,19 @@ ul {
 /* Language Selector */
 .lang-selector {
   position: relative;
-  order: 1;
+  order: 4;
 }
 
 .lang-btn {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all var(--transition-fast);
 }
 
@@ -358,21 +358,31 @@ ul {
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
-/* Theme Toggle */
+/* Theme Toggle - Floating bottom right */
 .theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   color: var(--text-muted);
+  box-shadow: var(--shadow-lg);
   transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
 .theme-toggle:hover {
   background: var(--bg-secondary);
   color: var(--text-primary);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
 }
 
 .theme-toggle .sun-icon {
