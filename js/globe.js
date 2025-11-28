@@ -7,14 +7,16 @@ import createGlobe from 'https://cdn.skypack.dev/cobe';
 function initGlobe() {
   const canvas = document.getElementById('globeCanvas');
   const globeCard = document.querySelector('.globe-card');
+  const globeContainer = document.querySelector('.globe-container');
 
-  if (!canvas || !globeCard) {
-    console.log('Globe: Missing canvas or globeCard');
+  if (!canvas || !globeCard || !globeContainer) {
+    console.log('Globe: Missing canvas, globeCard, or globeContainer');
     return;
   }
 
   let globe = null;
   let phi = 0;
+  let currentSize = 0;
 
   // 8 Financial Center coordinates [lat, lng]
   const markers = [
@@ -40,8 +42,19 @@ function initGlobe() {
     };
   }
 
+  function getContainerSize() {
+    const rect = globeContainer.getBoundingClientRect();
+    return Math.floor(rect.width) || 400;
+  }
+
   function createGlobeInstance() {
     const colors = getGlobeColors();
+    const size = getContainerSize();
+    currentSize = size;
+
+    // Update canvas attributes
+    canvas.width = size * 2;
+    canvas.height = size * 2;
 
     if (globe) {
       globe.destroy();
@@ -49,8 +62,8 @@ function initGlobe() {
 
     globe = createGlobe(canvas, {
       devicePixelRatio: 2,
-      width: 800,
-      height: 800,
+      width: size * 2,
+      height: size * 2,
       phi: 0,
       theta: 0.3,
       dark: colors.dark,
@@ -84,6 +97,18 @@ function initGlobe() {
       }, 50);
     });
   }
+
+  // Handle resize with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newSize = getContainerSize();
+      if (Math.abs(newSize - currentSize) > 20) {
+        createGlobeInstance();
+      }
+    }, 250);
+  });
 }
 
 // Initialize when DOM is ready

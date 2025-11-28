@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Beekman Strategic</title>
+  <meta name="description" content="Schedule a consultation with Beekman Strategic. Offices in Boca Raton with global presence across 8 financial centers.">
+
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="contact">
+  <!-- Floating Theme Toggle - Bottom Left -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+  </button>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark"></span>
+        <span class="logo-text">Beekman Strategic</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="/" data-i18n="nav.home">Home</a>
+        <a href="about.html" data-i18n="nav.about">About Us</a>
+        <div class="nav-dropdown">
+          <a href="services/wealth-management.html" data-i18n="nav.services">
+            Services
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown-content">
+            <a href="services/wealth-management.html">Asset & Wealth Management</a>
+            <a href="services/investment-banking.html">Investment Banking</a>
+            <a href="services/fund-structuring.html">Fund & Vehicle Structuring</a>
+          </div>
+        </div>
+        <a href="blog.html" data-i18n="nav.insights">Insights</a>
+        <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn" aria-label="Select language">
+            <span id="currentLang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button data-lang="en" class="active">English</button>
+            <button data-lang="es">Español</button>
+            <button data-lang="fr">Français</button>
+            <button data-lang="pt">Português</button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="https://email.beekmanstrategic.com" class="btn btn-secondary header-cta-secondary" data-i18n="nav.portal" target="_blank">Client Portal</a>
+        <a href="contact.html" class="btn btn-primary header-cta" data-i18n="nav.cta">Schedule Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label" data-i18n="contact.label">Contact</span>
+      <h1 class="section-title">
+        <span class="text-primary" data-i18n="contact.title1">Start the</span>
+        <span class="text-muted" data-i18n="contact.title2">conversation</span>
+      </h1>
+      <p class="section-desc" data-i18n="contact.desc">Ready to discuss how Beekman Strategic can serve your objectives? Connect directly with our principals for a confidential consultation.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact">
+    <div class="container">
+      <div class="contact-page-grid">
+        <div class="contact-info reveal">
+          <h2 class="section-title" style="font-size: 28px;">
+            <span class="text-primary">Get in</span>
+            <span class="text-muted">Touch</span>
+          </h2>
+          <p class="section-desc">
+            We believe in direct, principal-to-principal communication. When you reach out, you'll connect with senior advisors who understand the complexities of sophisticated wealth management.
+          </p>
+
+          <div class="contact-methods">
+            <div class="contact-method-card">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/>
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="contact.email">Email</h4>
+                <p><a href="mailto:info@beekmanstrategic.com">info@beekmanstrategic.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-method-card">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="contact.location">Headquarters</h4>
+                <p>Boca Raton, Florida</p>
+              </div>
+            </div>
+
+            <div class="contact-method-card">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 data-i18n="contact.global">Global Network</h4>
+                <p>Partners across 8 financial centers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Global Locations -->
+          <h3 style="margin-top: 48px; margin-bottom: 16px; font-size: 18px; font-weight: 600;">Global Presence</h3>
+          <div class="locations-grid">
+            <div class="location-item"><span>New York</span></div>
+            <div class="location-item"><span>Miami</span></div>
+            <div class="location-item"><span>London</span></div>
+            <div class="location-item"><span>Zurich</span></div>
+            <div class="location-item"><span>Monaco</span></div>
+            <div class="location-item"><span>Luxembourg</span></div>
+            <div class="location-item"><span>Singapore</span></div>
+            <div class="location-item"><span>Dubai</span></div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Name" data-i18n-placeholder="form.name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" data-i18n-placeholder="form.email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Phone" data-i18n-placeholder="form.phone">
+            </div>
+            <div class="form-group">
+              <input type="text" name="company" placeholder="Company" data-i18n-placeholder="form.company">
+            </div>
+          </div>
+          <div class="form-group">
+            <select name="interest">
+              <option value="" disabled selected data-i18n="form.interest">Area of Interest</option>
+              <option value="wealth">Asset & Wealth Management</option>
+              <option value="banking">Investment Banking</option>
+              <option value="structuring">Fund & Vehicle Structuring</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Tell us about your objectives" data-i18n-placeholder="form.message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" data-i18n="form.submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section bg-alt">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2 class="section-title">
+          <span class="text-primary">Prefer to schedule</span>
+          <span class="text-muted">a call directly?</span>
+        </h2>
+        <p>Our principals are available for confidential consultations. Choose a time that works for you.</p>
+        <a href="https://email.beekmanstrategic.com" class="btn btn-primary btn-lg" target="_blank">Access Client Portal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-mark"></span>
+            <span class="logo-text">Beekman Strategic</span>
+          </a>
+          <p data-i18n="footer.desc">Independent financial advisory and investment banking. Tradition meets innovation—where goals become reality.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.services">Services</h4>
+          <ul>
+            <li><a href="services/wealth-management.html" data-i18n="services.s1.title">Asset & Wealth Management</a></li>
+            <li><a href="services/investment-banking.html" data-i18n="services.s2.title">Investment Banking</a></li>
+            <li><a href="services/fund-structuring.html" data-i18n="services.s3.title">Fund & Vehicle Structuring</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="blog.html" data-i18n="nav.insights">Insights</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.locations">Global Presence</h4>
+          <ul>
+            <li>New York • Miami</li>
+            <li>London • Zurich</li>
+            <li>Monaco • Luxembourg</li>
+            <li>Singapore • Dubai</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Beekman Strategic. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <div class="footer-legal">
+          <a href="legal/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="legal/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a>
+          <a href="legal/disclosures.html" data-i18n="footer.disclosures">Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Overlay -->
+  <div class="cookie-overlay" id="cookieOverlay"></div>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent-inner">
+      <div class="cookie-header">
+        <div class="cookie-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
+            <circle cx="15" cy="8" r="1" fill="currentColor"/>
+            <circle cx="10" cy="14" r="1" fill="currentColor"/>
+            <circle cx="16" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="12" cy="17" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4>Cookie Preferences</h4>
+      </div>
+      <div class="cookie-text">
+        <p>We use cookies and similar technologies to enhance your experience on our website.</p>
+        <p class="cookie-text-secondary">By clicking "Accept All", you consent to our use of cookies. For more information, please review our <a href="legal/privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    (function() {
+      const cookieBanner = document.getElementById('cookieConsent');
+      const cookieOverlay = document.getElementById('cookieOverlay');
+      const acceptBtn = document.getElementById('cookieAccept');
+      const declineBtn = document.getElementById('cookieDecline');
+
+      function showBanner() {
+        cookieBanner.classList.add('visible');
+        cookieOverlay.classList.add('visible');
+        document.body.classList.add('cookie-banner-visible');
+      }
+
+      function hideBanner() {
+        cookieBanner.classList.remove('visible');
+        cookieOverlay.classList.remove('visible');
+        document.body.classList.remove('cookie-banner-visible');
+      }
+
+      const cookieChoice = localStorage.getItem('cookieConsent');
+      if (!cookieChoice) {
+        setTimeout(showBanner, 800);
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        hideBanner();
+      });
+
+      declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        hideBanner();
+      });
+    })();
+  </script>
+</body>
+</html>

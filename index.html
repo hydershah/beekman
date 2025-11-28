@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body data-page="home">
   <!-- Floating Theme Toggle - Bottom Left -->
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
     <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -34,11 +34,23 @@
       </a>
 
       <nav class="main-nav" id="mainNav">
-        <a href="#about" data-i18n="nav.about">The Firm</a>
-        <a href="#services" data-i18n="nav.services">Services</a>
-        <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
-        <a href="#insights" data-i18n="nav.insights">Insights</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="/" data-i18n="nav.home">Home</a>
+        <a href="about.html" data-i18n="nav.about">About Us</a>
+        <div class="nav-dropdown">
+          <a href="services/wealth-management.html" data-i18n="nav.services">
+            Services
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown-content">
+            <a href="services/wealth-management.html">Asset & Wealth Management</a>
+            <a href="services/investment-banking.html">Investment Banking</a>
+            <a href="services/fund-structuring.html">Fund & Vehicle Structuring</a>
+          </div>
+        </div>
+        <a href="blog.html" data-i18n="nav.insights">Insights</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
 
       <div class="header-actions">
@@ -66,7 +78,7 @@
         </button>
 
         <a href="https://email.beekmanstrategic.com" class="btn btn-secondary header-cta-secondary" data-i18n="nav.portal" target="_blank">Client Portal</a>
-        <a href="#contact" class="btn btn-primary header-cta" data-i18n="nav.cta">Schedule Consultation</a>
+        <a href="contact.html" class="btn btn-primary header-cta" data-i18n="nav.cta">Schedule Consultation</a>
       </div>
     </div>
   </header>
@@ -106,8 +118,8 @@
           Independent financial advisory and investment banking for the global elite. We translate your ambition into executable financial structures.
         </p>
         <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Schedule a Consultation</a>
-          <a href="#services" class="btn btn-secondary" data-i18n="hero.cta2">Explore Our Services</a>
+          <a href="contact.html" class="btn btn-primary" data-i18n="hero.cta1">Schedule a Consultation</a>
+          <a href="services/wealth-management.html" class="btn btn-secondary" data-i18n="hero.cta2">Explore Our Services</a>
         </div>
         <div class="hero-stats">
           <div class="stat">
@@ -187,7 +199,7 @@
           <div class="globe-card">
             <div class="globe-container">
               <!-- WebGL Globe using Cobe -->
-              <canvas id="globeCanvas" class="globe-canvas" width="800" height="800" style="width: 400px; height: 400px;"></canvas>
+              <canvas id="globeCanvas" class="globe-canvas"></canvas>
             </div>
 
             <span class="globe-label" data-i18n="about.visual">Global Financial Centers</span>
@@ -511,7 +523,8 @@
         </p>
       </div>
 
-      <div class="insights-grid">
+      <div class="insights-grid" id="insights-container">
+        <!-- Dynamic content loaded from CMS, fallback static content below -->
         <div class="insight-card reveal">
           <span class="insight-tag">Featured</span>
           <h3 data-i18n="insights.article1.title">The Evolution of the Family Office</h3>
@@ -561,7 +574,7 @@
           <span class="text-muted" data-i18n="cta.title2">into reality</span>
         </h2>
         <p data-i18n="cta.desc">Schedule a confidential consultation with our principals to discuss your objectives and explore how we can help.</p>
-        <a href="#contact" class="btn btn-primary btn-lg" data-i18n="cta.btn">Schedule a Consultation</a>
+        <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="cta.btn">Schedule a Consultation</a>
       </div>
     </div>
   </section>
@@ -665,20 +678,18 @@
         <div class="footer-col">
           <h4 data-i18n="footer.services">Services</h4>
           <ul>
-            <li><a href="#services" data-i18n="services.s1.title">Asset & Wealth Management</a></li>
-            <li><a href="#services" data-i18n="services.s2.title">Investment Banking</a></li>
-            <li><a href="#services" data-i18n="services.s3.title">Fund & Vehicle Structuring</a></li>
-            <li><a href="#services" data-i18n="services.s4.title">Powered by Beekman AI</a></li>
+            <li><a href="services/wealth-management.html" data-i18n="services.s1.title">Asset & Wealth Management</a></li>
+            <li><a href="services/investment-banking.html" data-i18n="services.s2.title">Investment Banking</a></li>
+            <li><a href="services/fund-structuring.html" data-i18n="services.s3.title">Fund & Vehicle Structuring</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4 data-i18n="footer.company">Company</h4>
           <ul>
-            <li><a href="#about" data-i18n="nav.about">The Firm</a></li>
-            <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
-            <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
-            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="blog.html" data-i18n="nav.insights">Insights</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
 
@@ -696,16 +707,91 @@
       <div class="footer-bottom">
         <p>&copy; 2025 Beekman Strategic. <span data-i18n="footer.rights">All rights reserved.</span></p>
         <div class="footer-legal">
-          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
-          <a href="#" data-i18n="footer.terms">Terms of Service</a>
-          <a href="#" data-i18n="footer.disclosures">Disclosures</a>
+          <a href="legal/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="legal/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a>
+          <a href="legal/disclosures.html" data-i18n="footer.disclosures">Disclosures</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Cookie Consent Overlay -->
+  <div class="cookie-overlay" id="cookieOverlay"></div>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent-inner">
+      <div class="cookie-header">
+        <div class="cookie-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
+            <circle cx="15" cy="8" r="1" fill="currentColor"/>
+            <circle cx="10" cy="14" r="1" fill="currentColor"/>
+            <circle cx="16" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="12" cy="17" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4>Cookie Preferences</h4>
+      </div>
+      <div class="cookie-text">
+        <p>We use cookies and similar technologies to enhance your experience on our website. These help us understand how you interact with our services, remember your preferences, and provide personalized content.</p>
+        <p class="cookie-text-secondary">By clicking "Accept All", you consent to our use of cookies. You may also decline non-essential cookies. For more information, please review our <a href="legal/privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script type="module" src="js/globe.js"></script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    (function() {
+      const cookieBanner = document.getElementById('cookieConsent');
+      const cookieOverlay = document.getElementById('cookieOverlay');
+      const acceptBtn = document.getElementById('cookieAccept');
+      const declineBtn = document.getElementById('cookieDecline');
+
+      function showBanner() {
+        cookieBanner.classList.add('visible');
+        cookieOverlay.classList.add('visible');
+        document.body.classList.add('cookie-banner-visible');
+      }
+
+      function hideBanner() {
+        cookieBanner.classList.remove('visible');
+        cookieOverlay.classList.remove('visible');
+        document.body.classList.remove('cookie-banner-visible');
+      }
+
+      // Check if user has already made a choice
+      const cookieChoice = localStorage.getItem('cookieConsent');
+
+      if (!cookieChoice) {
+        // Show banner after a short delay for better UX
+        setTimeout(showBanner, 800);
+      }
+
+      // Accept cookies
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        hideBanner();
+      });
+
+      // Decline cookies
+      declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        hideBanner();
+      });
+    })();
+  </script>
+
+  <!-- CMS Integration -->
+  <script src="js/cms.js"></script>
 </body>
 </html>

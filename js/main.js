@@ -12,7 +12,57 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initHeaderScroll();
   initContactForm();
+  initActiveNavigation();
+  handleHashOnLoad();
 });
+
+/**
+ * Set Active Navigation State
+ * Highlights current page in navigation
+ */
+function initActiveNavigation() {
+  const currentPage = document.body.dataset.page;
+  if (!currentPage) return;
+
+  // Handle main nav active states
+  document.querySelectorAll('.main-nav > a, .main-nav .nav-dropdown > a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    // Check if this link matches current page
+    if (currentPage === 'home' && (href === '/' || href === 'index.html')) {
+      link.classList.add('active');
+    } else if (currentPage === 'about' && href.includes('about')) {
+      link.classList.add('active');
+    } else if (currentPage === 'services' && href.includes('services')) {
+      link.classList.add('active');
+    } else if (currentPage === 'blog' && href.includes('blog')) {
+      link.classList.add('active');
+    } else if (currentPage === 'contact' && href.includes('contact')) {
+      link.classList.add('active');
+    }
+  });
+}
+
+/**
+ * Handle Hash on Page Load
+ * Scrolls to anchor if URL contains hash (for cross-page links)
+ */
+function handleHashOnLoad() {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      // Wait for page to fully render
+      setTimeout(() => {
+        const headerHeight = document.getElementById('header')?.offsetHeight || 0;
+        window.scrollTo({
+          top: target.offsetTop - headerHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
+}
 
 /**
  * Theme Toggle (Light/Dark Mode)
@@ -107,8 +157,36 @@ function initMobileNav() {
     document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
   });
 
-  // Close nav on link click
-  nav.querySelectorAll('a').forEach(link => {
+  // Handle mobile dropdown toggle (Services menu)
+  const dropdowns = nav.querySelectorAll('.nav-dropdown');
+  const isMobile = () => window.innerWidth <= 768;
+
+  dropdowns.forEach(dropdown => {
+    const dropdownLink = dropdown.querySelector(':scope > a');
+
+    if (dropdownLink) {
+      dropdownLink.addEventListener('click', (e) => {
+        // Only toggle dropdown on mobile screens
+        if (isMobile()) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdown.classList.toggle('expanded');
+        }
+      });
+    }
+  });
+
+  // Close nav on link click (but not on dropdown toggle links on mobile)
+  nav.querySelectorAll('.nav-dropdown-content a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      nav.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close nav on non-dropdown link click
+  nav.querySelectorAll(':scope > a').forEach(link => {
     link.addEventListener('click', () => {
       toggle.classList.remove('active');
       nav.classList.remove('active');

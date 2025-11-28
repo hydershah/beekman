@@ -1,0 +1,43 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#1a2234"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0891b2"/>
+      <stop offset="100%" style="stop-color:#6ee6ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg2)"/>
+
+  <!-- Growth chart -->
+  <g transform="translate(100, 100)">
+    <!-- Axes -->
+    <line x1="50" y1="250" x2="550" y2="250" stroke="#4a5d7a" stroke-width="2"/>
+    <line x1="50" y1="50" x2="50" y2="250" stroke="#4a5d7a" stroke-width="2"/>
+
+    <!-- Growth line -->
+    <path d="M50 220 Q150 200 200 180 T350 120 T450 80 L500 40" stroke="url(#accent2)" stroke-width="3" fill="none"/>
+
+    <!-- Data points -->
+    <circle cx="50" cy="220" r="6" fill="#0891b2"/>
+    <circle cx="150" cy="190" r="6" fill="#0891b2"/>
+    <circle cx="250" cy="150" r="6" fill="#0891b2"/>
+    <circle cx="350" cy="120" r="6" fill="#0891b2"/>
+    <circle cx="450" cy="80" r="6" fill="#0891b2"/>
+    <circle cx="500" cy="40" r="8" fill="#6ee6ff"/>
+
+    <!-- IPO marker -->
+    <line x1="500" y1="40" x2="500" y2="250" stroke="#6ee6ff" stroke-width="1" stroke-dasharray="5 5"/>
+    <text x="500" y="280" text-anchor="middle" fill="#6ee6ff" font-family="system-ui" font-size="16" font-weight="600">IPO</text>
+
+    <!-- Arrow up -->
+    <path d="M520 60 L540 40 L560 60" stroke="#6ee6ff" stroke-width="2" fill="none"/>
+    <line x1="540" y1="40" x2="540" y2="100" stroke="#6ee6ff" stroke-width="2"/>
+  </g>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="440" width="800" height="10" fill="url(#accent2)"/>
+</svg>

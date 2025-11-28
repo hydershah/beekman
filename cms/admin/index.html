@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beekman CMS - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+      <div class="login-card">
+        <div class="login-header">
+          <h1>Beekman CMS</h1>
+          <p>Content Management System</p>
+        </div>
+        <form id="login-form" class="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="admin@beekmanstrategic.com">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <p id="login-error" class="error-message"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Beekman CMS</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-page="overview">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item" data-page="posts">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Blog Posts</span>
+          </a>
+          <a href="#" class="nav-item" data-page="pages">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Pages</span>
+          </a>
+          <a href="#" class="nav-item" data-page="media">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            <span>Media Library</span>
+          </a>
+          <a href="#" class="nav-item" data-page="seo">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <span>SEO Settings</span>
+          </a>
+          <a href="#" class="nav-item" data-page="analytics">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Analytics</span>
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item" id="logout-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="content-header">
+          <div class="header-left">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+            <h1 id="page-title">Dashboard</h1>
+          </div>
+          <div class="header-right">
+            <div class="user-menu">
+              <span id="user-name">Admin</span>
+              <div class="user-avatar" id="user-avatar">A</div>
+            </div>
+          </div>
+        </header>
+
+        <div class="content-body">
+          <!-- Dashboard Overview -->
+          <div id="page-overview" class="page-content active">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-posts">0</span>
+                  <span class="stat-label">Blog Posts</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-pages">0</span>
+                  <span class="stat-label">Pages</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-views">0</span>
+                  <span class="stat-label">Total Views</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon orange">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                </div>
+                <div class="stat-info">
+                  <span class="stat-value" id="stat-seo">0%</span>
+                  <span class="stat-label">SEO Score</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>Recent Posts</h3>
+                  <a href="#" class="view-all" data-page="posts">View All</a>
+                </div>
+                <div class="card-body" id="recent-posts-list">
+                  <p class="empty-state">No posts yet</p>
+                </div>
+              </div>
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>Top Performing</h3>
+                </div>
+                <div class="card-body" id="top-posts-list">
+                  <p class="empty-state">No data available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog Posts -->
+          <div id="page-posts" class="page-content">
+            <div class="page-actions">
+              <button class="btn btn-primary" id="new-post-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                New Post
+              </button>
+              <div class="search-box">
+                <input type="text" placeholder="Search posts..." id="posts-search">
+              </div>
+            </div>
+            <div class="posts-list" id="posts-list">
+              <p class="empty-state">Loading posts...</p>
+            </div>
+          </div>
+
+          <!-- Pages -->
+          <div id="page-pages" class="page-content">
+            <div class="page-actions">
+              <button class="btn btn-primary" id="new-page-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                New Page
+              </button>
+            </div>
+            <div class="pages-list" id="pages-list">
+              <p class="empty-state">Loading pages...</p>
+            </div>
+          </div>
+
+          <!-- Media Library -->
+          <div id="page-media" class="page-content">
+            <div class="page-actions">
+              <button class="btn btn-primary" id="upload-media-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Upload
+              </button>
+              <input type="file" id="file-input" hidden multiple accept="image/*,video/*,application/pdf">
+            </div>
+            <div class="media-grid" id="media-grid">
+              <p class="empty-state">No media files</p>
+            </div>
+          </div>
+
+          <!-- SEO Settings -->
+          <div id="page-seo" class="page-content">
+            <div class="seo-tabs">
+              <button class="tab-btn active" data-tab="general">General</button>
+              <button class="tab-btn" data-tab="social">Social Media</button>
+              <button class="tab-btn" data-tab="analytics">Analytics</button>
+              <button class="tab-btn" data-tab="redirects">Redirects</button>
+              <button class="tab-btn" data-tab="audit">SEO Audit</button>
+            </div>
+
+            <div class="tab-content active" id="tab-general">
+              <form id="seo-general-form" class="settings-form">
+                <div class="form-group">
+                  <label for="site-name">Site Name</label>
+                  <input type="text" id="site-name" name="siteName">
+                </div>
+                <div class="form-group">
+                  <label for="site-url">Site URL</label>
+                  <input type="url" id="site-url" name="siteUrl">
+                </div>
+                <div class="form-group">
+                  <label for="default-meta-title">Default Meta Title</label>
+                  <input type="text" id="default-meta-title" name="defaultMetaTitle" maxlength="70">
+                  <span class="char-count"><span id="meta-title-count">0</span>/70</span>
+                </div>
+                <div class="form-group">
+                  <label for="default-meta-description">Default Meta Description</label>
+                  <textarea id="default-meta-description" name="defaultMetaDescription" rows="3" maxlength="160"></textarea>
+                  <span class="char-count"><span id="meta-desc-count">0</span>/160</span>
+                </div>
+                <div class="form-group">
+                  <label for="title-separator">Title Separator</label>
+                  <select id="title-separator" name="titleSeparator">
+                    <option value=" | ">|</option>
+                    <option value=" - ">-</option>
+                    <option value=" &mdash; ">&mdash;</option>
+                    <option value=" &raquo; ">&raquo;</option>
+                  </select>
+                </div>
+                <h4>Verification Codes</h4>
+                <div class="form-group">
+                  <label for="google-verification">Google Search Console</label>
+                  <input type="text" id="google-verification" name="verification.googleSiteVerification" placeholder="google-site-verification=...">
+                </div>
+                <div class="form-group">
+                  <label for="bing-verification">Bing Webmaster Tools</label>
+                  <input type="text" id="bing-verification" name="verification.bingSiteVerification">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+              </form>
+            </div>
+
+            <div class="tab-content" id="tab-social">
+              <form id="seo-social-form" class="settings-form">
+                <div class="form-group">
+                  <label for="og-image">Default Open Graph Image URL</label>
+                  <input type="url" id="og-image" name="social.ogDefaultImage">
+                </div>
+                <div class="form-group">
+                  <label for="twitter-handle">Twitter Handle</label>
+                  <input type="text" id="twitter-handle" name="social.twitterHandle" placeholder="@beekmanstrategic">
+                </div>
+                <div class="form-group">
+                  <label for="facebook-app-id">Facebook App ID</label>
+                  <input type="text" id="facebook-app-id" name="social.facebookAppId">
+                </div>
+                <div class="form-group">
+                  <label for="linkedin-company">LinkedIn Company</label>
+                  <input type="text" id="linkedin-company" name="social.linkedInCompany">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+              </form>
+            </div>
+
+            <div class="tab-content" id="tab-analytics">
+              <form id="seo-analytics-form" class="settings-form">
+                <div class="form-group">
+                  <label for="ga-id">Google Analytics (UA)</label>
+                  <input type="text" id="ga-id" name="analytics.googleAnalyticsId" placeholder="UA-XXXXXXXXX-X">
+                </div>
+                <div class="form-group">
+                  <label for="ga4-id">Google Analytics 4</label>
+                  <input type="text" id="ga4-id" name="analytics.ga4MeasurementId" placeholder="G-XXXXXXXXXX">
+                </div>
+                <div class="form-group">
+                  <label for="gtm-id">Google Tag Manager</label>
+                  <input type="text" id="gtm-id" name="analytics.googleTagManagerId" placeholder="GTM-XXXXXX">
+                </div>
+                <div class="form-group">
+                  <label for="fb-pixel">Facebook Pixel ID</label>
+                  <input type="text" id="fb-pixel" name="analytics.facebookPixelId">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+              </form>
+            </div>
+
+            <div class="tab-content" id="tab-redirects">
+              <div class="redirect-form">
+                <input type="text" id="redirect-source" placeholder="Source path (e.g., /old-page)">
+                <input type="text" id="redirect-dest" placeholder="Destination URL">
+                <select id="redirect-type">
+                  <option value="301">301 (Permanent)</option>
+                  <option value="302">302 (Temporary)</option>
+                </select>
+                <button class="btn btn-primary" id="add-redirect-btn">Add</button>
+              </div>
+              <div class="redirects-list" id="redirects-list">
+                <p class="empty-state">No redirects configured</p>
+              </div>
+            </div>
+
+            <div class="tab-content" id="tab-audit">
+              <button class="btn btn-primary" id="run-audit-btn">Run SEO Audit</button>
+              <div class="audit-results" id="audit-results">
+                <p class="empty-state">Click "Run SEO Audit" to analyze your site</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics -->
+          <div id="page-analytics" class="page-content">
+            <div class="analytics-overview">
+              <h3>Content Performance</h3>
+              <div id="analytics-content">
+                <p class="empty-state">Loading analytics...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Post/Page Editor Modal -->
+    <div id="editor-modal" class="modal hidden">
+      <div class="modal-content editor-modal">
+        <div class="modal-header">
+          <h2 id="editor-title">New Post</h2>
+          <button class="modal-close" id="close-editor">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="editor-layout">
+            <div class="editor-main">
+              <div class="form-group">
+                <label for="post-title">Title</label>
+                <input type="text" id="post-title" placeholder="Enter title...">
+              </div>
+              <div class="form-group">
+                <label for="post-slug">Slug</label>
+                <input type="text" id="post-slug" placeholder="auto-generated-from-title">
+              </div>
+              <div class="form-group">
+                <label for="post-excerpt">Excerpt</label>
+                <textarea id="post-excerpt" rows="2" placeholder="Brief description..."></textarea>
+              </div>
+              <div class="form-group">
+                <label for="post-content">Content (Markdown)</label>
+                <textarea id="post-content" rows="20" placeholder="Write your content in Markdown..."></textarea>
+              </div>
+            </div>
+            <div class="editor-sidebar">
+              <div class="sidebar-section">
+                <h4>Publish</h4>
+                <div class="form-group">
+                  <label for="post-status">Status</label>
+                  <select id="post-status">
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="scheduled">Scheduled</option>
+                  </select>
+                </div>
+                <div class="form-group" id="schedule-group" style="display:none">
+                  <label for="post-scheduled">Schedule Date</label>
+                  <input type="datetime-local" id="post-scheduled">
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <h4>Category & Tags</h4>
+                <div class="form-group">
+                  <label for="post-category">Category</label>
+                  <select id="post-category">
+                    <option value="insights">Insights</option>
+                    <option value="market-analysis">Market Analysis</option>
+                    <option value="wealth-management">Wealth Management</option>
+                    <option value="investment-banking">Investment Banking</option>
+                    <option value="company-news">Company News</option>
+                    <option value="press-release">Press Release</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="post-tags">Tags (comma-separated)</label>
+                  <input type="text" id="post-tags" placeholder="finance, investing, wealth">
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <h4>Featured Image</h4>
+                <div class="form-group">
+                  <label for="post-image">Image URL</label>
+                  <input type="url" id="post-image" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                  <label for="post-image-alt">Alt Text</label>
+                  <input type="text" id="post-image-alt" placeholder="Image description">
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <h4>SEO</h4>
+                <div class="form-group">
+                  <label for="seo-meta-title">Meta Title</label>
+                  <input type="text" id="seo-meta-title" maxlength="70">
+                  <span class="char-count"><span id="seo-title-count">0</span>/70</span>
+                </div>
+                <div class="form-group">
+                  <label for="seo-meta-desc">Meta Description</label>
+                  <textarea id="seo-meta-desc" rows="3" maxlength="160"></textarea>
+                  <span class="char-count"><span id="seo-desc-count">0</span>/160</span>
+                </div>
+                <div class="form-group">
+                  <label for="seo-focus-keyword">Focus Keyword</label>
+                  <input type="text" id="seo-focus-keyword">
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <h4>Language</h4>
+                <div class="form-group">
+                  <select id="post-language">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="pt">Portuguese</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="cancel-editor">Cancel</button>
+          <button class="btn btn-primary" id="save-editor">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">
+      <span id="toast-message"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

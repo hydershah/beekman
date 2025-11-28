@@ -1,0 +1,43 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#1a2234"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0891b2"/>
+      <stop offset="100%" style="stop-color:#6ee6ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg1)"/>
+
+  <!-- Divider line -->
+  <line x1="400" y1="50" x2="400" y2="400" stroke="#6ee6ff" stroke-width="2" opacity="0.3"/>
+
+  <!-- Left side - Swiss Cross -->
+  <g transform="translate(200, 225)">
+    <circle r="80" stroke="#0891b2" stroke-width="2" fill="none"/>
+    <rect x="-40" y="-12" width="80" height="24" rx="2" fill="#0891b2"/>
+    <rect x="-12" y="-40" width="24" height="80" rx="2" fill="#0891b2"/>
+    <text x="0" y="120" text-anchor="middle" fill="#7a92b0" font-family="system-ui" font-size="14" font-weight="600">SIX SWISS</text>
+  </g>
+
+  <!-- Right side - NYSE columns -->
+  <g transform="translate(600, 225)">
+    <rect x="-60" y="-60" width="120" height="100" rx="4" stroke="#6ee6ff" stroke-width="2" fill="none"/>
+    <line x1="-40" y1="-60" x2="-40" y2="40" stroke="#6ee6ff" stroke-width="3"/>
+    <line x1="-15" y1="-60" x2="-15" y2="40" stroke="#6ee6ff" stroke-width="3"/>
+    <line x1="10" y1="-60" x2="10" y2="40" stroke="#6ee6ff" stroke-width="3"/>
+    <line x1="35" y1="-60" x2="35" y2="40" stroke="#6ee6ff" stroke-width="3"/>
+    <path d="M-60 -70 L0 -100 L60 -70" stroke="#6ee6ff" stroke-width="2" fill="none"/>
+    <text x="0" y="80" text-anchor="middle" fill="#7a92b0" font-family="system-ui" font-size="14" font-weight="600">NYSE</text>
+  </g>
+
+  <!-- Comparison arrows -->
+  <path d="M320 200 L360 225 L320 250" stroke="url(#accent1)" stroke-width="2" fill="none"/>
+  <path d="M480 200 L440 225 L480 250" stroke="url(#accent1)" stroke-width="2" fill="none"/>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="440" width="800" height="10" fill="url(#accent1)"/>
+</svg>

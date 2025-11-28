@@ -1,12 +1,15 @@
 /**
  * Internationalization (i18n) Module
  * Supports: English, Spanish, French, Portuguese
+ * Version: 2.0.1
  */
+console.log('[i18n] Loading version 2.0.1');
 
 const translations = {
   en: {
     // Navigation
-    'nav.about': 'The Firm',
+    'nav.home': 'Home',
+    'nav.about': 'About Us',
     'nav.services': 'Services',
     'nav.expertise': 'Expertise',
     'nav.insights': 'Insights',
@@ -186,7 +189,8 @@ const translations = {
 
   es: {
     // Navigation
-    'nav.about': 'La Firma',
+    'nav.home': 'Inicio',
+    'nav.about': 'Nosotros',
     'nav.services': 'Servicios',
     'nav.expertise': 'Experiencia',
     'nav.insights': 'Perspectivas',
@@ -366,6 +370,7 @@ const translations = {
 
   fr: {
     // Navigation
+    'nav.home': 'Accueil',
     'nav.about': 'La Firme',
     'nav.services': 'Services',
     'nav.expertise': 'Expertise',
@@ -546,6 +551,7 @@ const translations = {
 
   pt: {
     // Navigation
+    'nav.home': 'Início',
     'nav.about': 'A Firma',
     'nav.services': 'Serviços',
     'nav.expertise': 'Expertise',
@@ -756,14 +762,39 @@ class I18n {
   }
 
   t(key) {
-    return translations[this.currentLang]?.[key] || translations.en[key] || key;
+    const langTranslations = translations[this.currentLang];
+    if (langTranslations && langTranslations[key]) {
+      return langTranslations[key];
+    }
+    if (translations.en && translations.en[key]) {
+      return translations.en[key];
+    }
+    return key;
   }
 
   updateContent() {
-    // Update text content
+    console.log('[i18n] updateContent called, lang:', this.currentLang);
+    // Update text content (preserve child elements like SVG icons)
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
-      el.textContent = this.t(key);
+      const translation = this.t(key);
+      if (key === 'nav.home') {
+        console.log('[i18n] nav.home translation:', translation);
+      }
+
+      // Check if element has child elements (like SVG)
+      const hasChildElements = el.querySelector('*') !== null;
+
+      if (!hasChildElements) {
+        // No child elements, safe to replace all content
+        el.textContent = translation;
+      } else {
+        // Has child elements - need to preserve them
+        // Clone children, set text, then re-append children
+        const children = Array.from(el.children);
+        el.textContent = translation + ' ';
+        children.forEach(child => el.appendChild(child));
+      }
     });
 
     // Update placeholders
@@ -785,5 +816,11 @@ class I18n {
   }
 }
 
-// Initialize
-window.i18n = new I18n();
+// Initialize after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    window.i18n = new I18n();
+  });
+} else {
+  window.i18n = new I18n();
+}

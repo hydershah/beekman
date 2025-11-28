@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO-Optimized Title (50-60 chars) -->
+  <title>Insights & Perspectives | Beekman Strategic Blog</title>
+
+  <!-- Meta Description (150-160 chars) -->
+  <meta name="description" content="Strategic insights on wealth management, cross-border structuring, family offices, and global markets from Beekman Strategic's expert advisors.">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://beekmanstrategic.com/blog">
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://beekmanstrategic.com/blog">
+  <meta property="og:title" content="Insights & Perspectives | Beekman Strategic">
+  <meta property="og:description" content="Strategic insights on wealth management, cross-border structuring, family offices, and global markets.">
+  <meta property="og:image" content="https://beekmanstrategic.com/images/og-blog.jpg">
+  <meta property="og:site_name" content="Beekman Strategic">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Insights & Perspectives | Beekman Strategic">
+  <meta name="twitter:description" content="Strategic insights on wealth management, cross-border structuring, family offices, and global markets.">
+  <meta name="twitter:image" content="https://beekmanstrategic.com/images/og-blog.jpg">
+
+  <!-- JSON-LD Schema: Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Beekman Strategic Insights",
+    "description": "Strategic insights on wealth management, cross-border structuring, family offices, and global markets from Beekman Strategic.",
+    "url": "https://beekmanstrategic.com/blog",
+    "inLanguage": "en-US",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Beekman Strategic",
+      "url": "https://beekmanstrategic.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://beekmanstrategic.com/images/logo.png",
+        "width": 200,
+        "height": 60
+      }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "The Evolution of the Family Office",
+        "url": "https://beekmanstrategic.com/blog/family-office-evolution",
+        "datePublished": "2025-01-15",
+        "author": {
+          "@type": "Person",
+          "name": "Beekman Strategic"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Beekman Strategic",
+    "url": "https://beekmanstrategic.com",
+    "logo": "https://beekmanstrategic.com/images/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/beekman-strategic"
+    ]
+  }
+  </script>
+
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="blog">
+  <!-- Floating Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+  </button>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark"></span>
+        <span class="logo-text">Beekman Strategic</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="/" data-i18n="nav.home">Home</a>
+        <a href="about.html" data-i18n="nav.about">About Us</a>
+        <div class="nav-dropdown">
+          <a href="services/wealth-management.html" data-i18n="nav.services">
+            Services
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown-content">
+            <a href="services/wealth-management.html">Asset & Wealth Management</a>
+            <a href="services/investment-banking.html">Investment Banking</a>
+            <a href="services/fund-structuring.html">Fund & Vehicle Structuring</a>
+          </div>
+        </div>
+        <a href="blog.html" class="active" data-i18n="nav.insights">Insights</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn" aria-label="Select language">
+            <span id="currentLang">EN</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button data-lang="en" class="active">English</button>
+            <button data-lang="es">Español</button>
+            <button data-lang="fr">Français</button>
+            <button data-lang="pt">Português</button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="https://email.beekmanstrategic.com" class="btn btn-secondary header-cta-secondary" data-i18n="nav.portal" target="_blank">Client Portal</a>
+        <a href="contact.html" class="btn btn-primary header-cta" data-i18n="nav.cta">Schedule Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name" aria-current="page">Insights</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Page Header with H1 -->
+    <section class="page-header blog-header">
+      <div class="container">
+        <span class="section-label" data-i18n="insights.label">Perspectives</span>
+        <h1 class="section-title">
+          <span class="text-primary" data-i18n="insights.title1">Strategic Insights</span>
+          <span class="text-muted" data-i18n="insights.title2">for Global Markets</span>
+        </h1>
+        <p class="section-desc" data-i18n="insights.desc">
+          Navigating the complexities of global finance requires more than data—it requires perspective. Explore the latest thinking from the Beekman Strategic team.
+        </p>
+      </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="blog-filters-section">
+      <div class="container">
+        <nav class="blog-filters" aria-label="Filter articles by category">
+          <button class="filter-btn active" data-category="all">All Insights</button>
+          <button class="filter-btn" data-category="wealth-management">Wealth Management</button>
+          <button class="filter-btn" data-category="market-analysis">Market Analysis</button>
+          <button class="filter-btn" data-category="structuring">Structuring</button>
+          <button class="filter-btn" data-category="family-office">Family Office</button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="section featured-section">
+      <div class="container">
+        <article class="featured-article reveal">
+          <a href="blog/family-office-evolution.html" class="featured-article-link">
+            <div class="featured-article-image">
+              <img src="images/blog/featured-family-office.svg" alt="Modern family office meeting with digital displays showing portfolio analytics" loading="eager" width="800" height="450">
+            </div>
+            <div class="featured-article-content">
+              <div class="featured-article-meta">
+                <span class="category-tag" data-category="family-office">Featured</span>
+                <time datetime="2025-01-15">January 15, 2025</time>
+                <span class="reading-time">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                  </svg>
+                  8 min read
+                </span>
+              </div>
+              <h2>The Evolution of the Family Office: Integrating AI with Traditional Governance</h2>
+              <p>How modern families are integrating artificial intelligence with traditional governance structures to manage multi-jurisdictional assets and preserve legacy across generations.</p>
+              <span class="read-more-link">
+                Read Full Article
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Blog Grid Section -->
+    <section class="section blog-listing">
+      <div class="container">
+        <h2 class="sr-only">All Articles</h2>
+
+        <div class="blog-grid" id="blog-posts-container">
+          <!-- Article 1 -->
+          <article class="blog-card reveal" data-category="market-analysis">
+            <a href="blog/swiss-vs-nyse-listings.html" class="blog-card-link">
+              <div class="blog-card-image">
+                <img src="images/blog/swiss-nyse.svg" alt="Split view of Swiss Alps and New York City skyline representing global markets" loading="lazy" width="400" height="225">
+              </div>
+              <div class="blog-card-content">
+                <div class="blog-card-meta">
+                  <span class="category-tag" data-category="market-analysis">Analysis</span>
+                  <time datetime="2025-01-10">January 10, 2025</time>
+                </div>
+                <h3>Swiss Securities vs. NYSE Listings: A Comparative Analysis</h3>
+                <p>A comprehensive analysis of structuring options for international clients seeking capital market access across different jurisdictions.</p>
+                <div class="blog-card-footer">
+                  <span class="reading-time">6 min read</span>
+                  <span class="read-more">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="blog-card reveal" data-category="structuring">
+            <a href="blog/pre-ipo-structuring.html" class="blog-card-link">
+              <div class="blog-card-image">
+                <img src="images/blog/pre-ipo.svg" alt="Business meeting discussing IPO strategy with financial charts" loading="lazy" width="400" height="225">
+              </div>
+              <div class="blog-card-content">
+                <div class="blog-card-meta">
+                  <span class="category-tag" data-category="structuring">Strategy</span>
+                  <time datetime="2025-01-05">January 5, 2025</time>
+                </div>
+                <h3>Efficient Pre-IPO Structuring: Best Practices</h3>
+                <p>Best practices for entrepreneurs preparing for public markets while optimizing tax efficiency and corporate governance.</p>
+                <div class="blog-card-footer">
+                  <span class="reading-time">7 min read</span>
+                  <span class="read-more">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="blog-card reveal" data-category="wealth-management">
+            <a href="blog/cross-border-wealth-transfer.html" class="blog-card-link">
+              <div class="blog-card-image">
+                <img src="images/blog/wealth-transfer.svg" alt="Multi-generational family reviewing estate planning documents" loading="lazy" width="400" height="225">
+              </div>
+              <div class="blog-card-content">
+                <div class="blog-card-meta">
+                  <span class="category-tag" data-category="wealth-management">Guide</span>
+                  <time datetime="2024-12-28">December 28, 2024</time>
+                </div>
+                <h3>Navigating Cross-Border Wealth Transfer</h3>
+                <p>Essential considerations for ultra-high-net-worth families planning intergenerational wealth transfer across multiple jurisdictions.</p>
+                <div class="blog-card-footer">
+                  <span class="reading-time">10 min read</span>
+                  <span class="read-more">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 4 -->
+          <article class="blog-card reveal" data-category="market-analysis">
+            <a href="blog/2025-structuring-outlook.html" class="blog-card-link">
+              <div class="blog-card-image">
+                <img src="images/blog/2025-outlook.svg" alt="Global financial markets visualization with 2025 projection data" loading="lazy" width="400" height="225">
+              </div>
+              <div class="blog-card-content">
+                <div class="blog-card-meta">
+                  <span class="category-tag" data-category="market-analysis">Market Update</span>
+                  <time datetime="2024-12-20">December 20, 2024</time>
+                </div>
+                <h3>2025 Global Structuring Outlook</h3>
+                <p>Key trends and regulatory changes shaping cross-border financial structuring in the year ahead.</p>
+                <div class="blog-card-footer">
+                  <span class="reading-time">5 min read</span>
+                  <span class="read-more">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 5 -->
+          <article class="blog-card reveal" data-category="family-office">
+            <a href="blog/ai-private-banking.html" class="blog-card-link">
+              <div class="blog-card-image">
+                <img src="images/blog/ai-banking.svg" alt="AI interface integrated with private banking dashboard" loading="lazy" width="400" height="225">
+              </div>
+              <div class="blog-card-content">
+                <div class="blog-card-meta">
+                  <span class="category-tag" data-category="family-office">Technology</span>
+                  <time datetime="2024-12-15">December 15, 2024</time>
+                </div>
+                <h3>AI in Private Banking: A Reality Check</h3>
+                <p>How artificial intelligence is transforming financial structuring—and where human expertise remains irreplaceable.</p>
+                <div class="blog-card-footer">
+                  <span class="reading-time">8 min read</span>
+                  <span class="read-more">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 6 -->
+          <article class="blog-card reveal" data-category="structuring">
+            <a href="blog/offshore-structures-2025.html" class="blog-card-link">
+              <div class="blog-card-image">
+                <img src="images/blog/offshore.svg" alt="World map showing international financial centers and connections" loading="lazy" width="400" height="225">
+              </div>
+              <div class="blog-card-content">
+                <div class="blog-card-meta">
+                  <span class="category-tag" data-category="structuring">Regulatory</span>
+                  <time datetime="2024-12-10">December 10, 2024</time>
+                </div>
+                <h3>Offshore Structures in 2025: What's Changed</h3>
+                <p>Understanding the evolving regulatory landscape for international holding structures and tax-efficient vehicles.</p>
+                <div class="blog-card-footer">
+                  <span class="reading-time">9 min read</span>
+                  <span class="read-more">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="pagination" aria-label="Blog pagination" id="blog-pagination">
+          <a href="blog.html?page=1" class="pagination-btn active" aria-current="page">1</a>
+          <a href="blog.html?page=2" class="pagination-btn">2</a>
+          <a href="blog.html?page=3" class="pagination-btn">3</a>
+          <a href="blog.html?page=2" class="pagination-btn pagination-next" aria-label="Next page">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Topics Section (Internal Linking Hub) -->
+    <section class="section topics-section bg-alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Topics</span>
+          <h2 class="section-title">
+            <span class="text-primary">Explore by</span>
+            <span class="text-muted">Category</span>
+          </h2>
+        </div>
+
+        <div class="topics-grid">
+          <a href="blog.html?category=wealth-management" class="topic-card reveal">
+            <div class="topic-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3>Wealth Management</h3>
+            <p>Asset allocation, portfolio strategy, and wealth preservation insights.</p>
+            <span class="topic-count">12 articles</span>
+          </a>
+
+          <a href="blog.html?category=family-office" class="topic-card reveal">
+            <div class="topic-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Family Office</h3>
+            <p>Governance, succession planning, and multi-generational strategies.</p>
+            <span class="topic-count">8 articles</span>
+          </a>
+
+          <a href="blog.html?category=structuring" class="topic-card reveal">
+            <div class="topic-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
+              </svg>
+            </div>
+            <h3>Structuring</h3>
+            <p>Cross-border vehicles, tax optimization, and regulatory compliance.</p>
+            <span class="topic-count">15 articles</span>
+          </a>
+
+          <a href="blog.html?category=market-analysis" class="topic-card reveal">
+            <div class="topic-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <h3>Market Analysis</h3>
+            <p>Global market trends, economic outlooks, and investment opportunities.</p>
+            <span class="topic-count">10 articles</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section">
+      <div class="container">
+        <div class="newsletter-section reveal">
+          <div class="newsletter-content">
+            <h2 data-i18n="newsletter.title">Stay Informed</h2>
+            <p data-i18n="newsletter.desc">Receive our latest market insights and structuring strategies directly to your inbox.</p>
+          </div>
+          <form class="newsletter-form" id="newsletterForm" action="/api/subscribe" method="POST">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" data-i18n-placeholder="newsletter.placeholder" required autocomplete="email">
+            <button type="submit" class="btn btn-primary" data-i18n="newsletter.btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2 class="section-title">
+            <span class="text-primary" data-i18n="cta.title1">Let's translate your ambition</span>
+            <span class="text-muted" data-i18n="cta.title2">into reality</span>
+          </h2>
+          <p data-i18n="cta.desc">Schedule a confidential consultation with our principals to discuss your objectives and explore how we can help.</p>
+          <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="cta.btn">Schedule a Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-mark"></span>
+            <span class="logo-text">Beekman Strategic</span>
+          </a>
+          <p data-i18n="footer.desc">Independent financial advisory and investment banking. Tradition meets innovation—where goals become reality.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.services">Services</h4>
+          <ul>
+            <li><a href="services/wealth-management.html" data-i18n="services.s1.title">Asset & Wealth Management</a></li>
+            <li><a href="services/investment-banking.html" data-i18n="services.s2.title">Investment Banking</a></li>
+            <li><a href="services/fund-structuring.html" data-i18n="services.s3.title">Fund & Vehicle Structuring</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="blog.html" data-i18n="nav.insights">Insights</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.locations">Global Presence</h4>
+          <ul>
+            <li>New York | Miami</li>
+            <li>London | Zurich</li>
+            <li>Monaco | Luxembourg</li>
+            <li>Singapore | Dubai</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Beekman Strategic. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <div class="footer-legal">
+          <a href="legal/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="legal/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a>
+          <a href="legal/disclosures.html" data-i18n="footer.disclosures">Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div class="cookie-overlay" id="cookieOverlay"></div>
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent-inner">
+      <div class="cookie-header">
+        <div class="cookie-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
+            <circle cx="15" cy="8" r="1" fill="currentColor"/>
+            <circle cx="10" cy="14" r="1" fill="currentColor"/>
+            <circle cx="16" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="12" cy="17" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4>Cookie Preferences</h4>
+      </div>
+      <div class="cookie-text">
+        <p>We use cookies and similar technologies to enhance your experience on our website.</p>
+        <p class="cookie-text-secondary">By clicking "Accept All", you consent to our use of cookies. For more information, please review our <a href="legal/privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    (function() {
+      const cookieBanner = document.getElementById('cookieConsent');
+      const cookieOverlay = document.getElementById('cookieOverlay');
+      const acceptBtn = document.getElementById('cookieAccept');
+      const declineBtn = document.getElementById('cookieDecline');
+
+      function showBanner() {
+        cookieBanner.classList.add('visible');
+        cookieOverlay.classList.add('visible');
+        document.body.classList.add('cookie-banner-visible');
+      }
+
+      function hideBanner() {
+        cookieBanner.classList.remove('visible');
+        cookieOverlay.classList.remove('visible');
+        document.body.classList.remove('cookie-banner-visible');
+      }
+
+      const cookieChoice = localStorage.getItem('cookieConsent');
+      if (!cookieChoice) {
+        setTimeout(showBanner, 800);
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        hideBanner();
+      });
+
+      declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        hideBanner();
+      });
+    })();
+  </script>
+</body>
+</html>
