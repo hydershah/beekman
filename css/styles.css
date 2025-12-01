@@ -1779,10 +1779,13 @@ ul {
     min-width: auto;
     opacity: 1;
     visibility: visible;
+    width: 100%;
   }
 
   .main-nav .nav-dropdown.expanded .nav-dropdown-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .main-nav .nav-dropdown.expanded > a svg {
@@ -1790,10 +1793,12 @@ ul {
   }
 
   .main-nav .nav-dropdown-content a {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.7);
     padding: 8px 24px;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .main-nav .nav-dropdown-content a:hover {
