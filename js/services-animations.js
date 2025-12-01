@@ -486,199 +486,188 @@ class ServiceAnimation {
   // ==========================================
   // WEALTH MANAGEMENT ANIMATION
   // ==========================================
+  // drawWealthGrowthPath removed for cleaner look
+
   initWealthManagement() {
-    // Concept: "The Financial Landscape" - Accumulation and Growth
-    // Stacked, flowing waves representing the growth of a diversified portfolio over time.
-    // It conveys "Volume", "Stability", and "Smooth Growth".
+    const scale = Math.min(this.width, this.height) / 400;
+    const cx = this.width * 0.5;
+    const cy = this.height * 0.5; // Centered vertically
+
+    // Core portfolio hub
+    this.wmCore = { x: cx, y: cy, r: 34 * scale };
+    this.wmOrbitSpeed = 0.05; // Much slower rotation
+
+    // Rotating allocation rings - Simplified
+    this.wmRings = [
+      { radius: 85 * scale, width: 1 * scale, speed: 0.05, alpha: 0.3, dash: [] }, // Static-ish ring
+      { radius: 125 * scale, width: 1 * scale, speed: -0.03, alpha: 0.2, dash: [4 * scale, 4 * scale] }
+    ];
+
+    // Asset pillars orbiting the core - Evenly distributed
+    const assetLabels = [
+      { title: 'Public Markets', short: 'Equities' },
+      { title: 'Private Equity', short: 'Growth' },
+      { title: 'Credit', short: 'Income' },
+      { title: 'Real Assets', short: 'Inflation' },
+      { title: 'Cash & Liquidity', short: 'Defense' },
+      { title: 'Ventures', short: 'Optionality' }
+    ];
+
+    const angleStep = (Math.PI * 2) / assetLabels.length;
+
+    this.wmAssets = assetLabels.map((asset, index) => ({
+      ...asset,
+      baseAngle: index * angleStep - Math.PI / 2, // Start from top
+      color: index % 2 === 0 ? this.colors.accent : this.colors.primary
+    }));
+
+    // Flow pulses along the spokes - Slower
+    this.wmFlows = this.wmAssets.map(() => ({
+      progress: Math.random(),
+      speed: 0.001 + Math.random() * 0.001
+    }));
     
-    this.wmLayers = [];
-    const layerCount = 4;
-    
-    for(let i=0; i<layerCount; i++) {
-      this.wmLayers.push({
-        offset: i * 20, // Vertical offset
-        speed: 0.0005 + (i * 0.0002), // Different speeds for parallax
-        amplitude: 15 + (i * 5), // Wave height
-        color: i === 0 ? this.colors.accent : this.colors.primary, // Top layer is accent
-        alpha: 0.1 + (i * 0.15), // Bottom layers are more opaque
-        points: [] // Will be populated in draw
-      });
-    }
-    
-    // "Milestone" particles floating above the landscape
-    this.wmParticles = [];
-    for(let i=0; i<5; i++) {
-      this.wmParticles.push({
-        x: Math.random() * this.width,
-        y: Math.random() * (this.height * 0.5),
-        r: Math.random() * 2 + 1,
-        speedY: -0.2 - Math.random() * 0.3,
-        alpha: Math.random()
-      });
-    }
+    // Sparkles removed
   }
 
   drawWealthManagement() {
     const ctx = this.ctx;
-    const time = Date.now();
+    const now = Date.now();
+    const t = now * 0.001;
     const scale = Math.min(this.width, this.height) / 400;
+    const cx = this.wmCore.x;
+    const cy = this.wmCore.y;
 
     // Background
     const grad = ctx.createLinearGradient(0, 0, 0, this.height);
     grad.addColorStop(0, '#0a1628');
-    grad.addColorStop(1, '#1a2234');
+    grad.addColorStop(1, '#111c2d');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, this.width, this.height);
 
-    // Draw Grid (Subtle background structure)
-    ctx.strokeStyle = 'rgba(110, 230, 255, 0.03)';
+    // Subtle Radial glow
+    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, this.width * 0.6);
+    glow.addColorStop(0, 'rgba(14, 34, 56, 0.4)');
+    glow.addColorStop(1, 'rgba(10, 22, 40, 0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, this.width, this.height);
+
+    // Grid - Fainter
+    ctx.strokeStyle = 'rgba(110, 230, 255, 0.02)';
     ctx.lineWidth = 1;
-    const gridSize = 40 * scale;
-    for(let x=0; x<this.width; x+=gridSize) {
+    const gridSize = 50 * scale;
+    for (let x = 0; x < this.width; x += gridSize) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, this.height); ctx.stroke();
     }
-
-    // Draw Stacked Waves (Back to Front)
-    // We draw from the last layer (furthest back/bottom) to the first (top)
-    // Actually, usually back layers are drawn first.
-    // Let's say layer[3] is the big background one, layer[0] is the sharp foreground one.
-    
-    this.wmLayers.slice().reverse().forEach((layer, index) => {
-      // Actual index in original array
-      const originalIndex = this.wmLayers.length - 1 - index;
-      
-      ctx.beginPath();
-      ctx.moveTo(0, this.height); // Start bottom left
-
-      const points = 10;
-      const step = this.width / points;
-      
-      // Generate wave points
-      for(let i=0; i<=points; i++) {
-        const x = i * step;
-        // Base height rises slightly from left to right (Growth trend)
-        const trend = (i / points) * (40 * scale); 
-        const baseHeight = this.height * 0.7 - (originalIndex * 30 * scale) - trend;
-        
-        // Sine wave motion
-        const wave = Math.sin((i * 0.5) + (time * layer.speed)) * (layer.amplitude * scale);
-        const wave2 = Math.cos((i * 0.2) + (time * layer.speed * 0.5)) * (layer.amplitude * 0.5 * scale);
-        
-        // Mouse interaction (Repel/Attract)
-        const dx = this.mouse.x - x;
-        const dist = Math.abs(dx);
-        const mouseEffect = Math.max(0, (1 - dist / (200 * scale))) * (20 * scale);
-        
-        const y = baseHeight + wave + wave2 - mouseEffect;
-        
-        // Smooth curve
-        if (i === 0) {
-          ctx.lineTo(x, y);
-        } else {
-          // Simple smoothing (could be better with bezier, but lineTo with high point count is okay for this style)
-          // Let's use quadratic for better smoothness with fewer points
-          const prevX = (i-1) * step;
-          // We need to store previous Y. 
-          // For simplicity in this loop, let's just use high point count or simple lineTo.
-          // Actually, let's use the bezier helper logic from before if we want super smooth.
-          // But here, let's just do a simple curve.
-          
-          // Re-calculate prevY for the curve control
-          const prevTrend = ((i-1) / points) * (40 * scale);
-          const prevBase = this.height * 0.7 - (originalIndex * 30 * scale) - prevTrend;
-          const prevWave = Math.sin(((i-1) * 0.5) + (time * layer.speed)) * (layer.amplitude * scale);
-          const prevWave2 = Math.cos(((i-1) * 0.2) + (time * layer.speed * 0.5)) * (layer.amplitude * 0.5 * scale);
-          const prevMouse = Math.max(0, (1 - Math.abs(this.mouse.x - prevX) / (200 * scale))) * (20 * scale);
-          const prevY = prevBase + prevWave + prevWave2 - prevMouse;
-
-          const cpX = (prevX + x) / 2;
-          const cpY = (prevY + y) / 2;
-          ctx.quadraticCurveTo(prevX, prevY, cpX, cpY);
-          
-          if (i === points) ctx.lineTo(x, y); // Finish
-        }
-      }
-
-      ctx.lineTo(this.width, this.height); // Bottom right
-      ctx.closePath();
-
-      // Fill
-      const fillGrad = ctx.createLinearGradient(0, 0, 0, this.height);
-      fillGrad.addColorStop(0, layer.color);
-      fillGrad.addColorStop(1, 'rgba(10, 22, 40, 0)'); // Fade to transparent
-      
-      ctx.fillStyle = fillGrad;
-      ctx.globalAlpha = layer.alpha;
-      ctx.fill();
-      
-      // Stroke top edge
-      ctx.strokeStyle = layer.color;
-      ctx.lineWidth = 1.5 * scale;
-      ctx.globalAlpha = 0.8;
-      ctx.stroke();
-      ctx.globalAlpha = 1.0;
-    });
-
-    // Draw "Growth Particles" (Rising bubbles)
-    this.wmParticles.forEach(p => {
-      p.y += p.speedY * scale;
-      p.alpha -= 0.005;
-      
-      // Reset if off screen or invisible
-      if (p.y < 0 || p.alpha <= 0) {
-        p.y = this.height * 0.7 + Math.random() * 50;
-        p.x = Math.random() * this.width;
-        p.alpha = 1;
-        p.speedY = -0.2 - Math.random() * 0.3;
-      }
-      
-      ctx.fillStyle = this.colors.accent;
-      ctx.globalAlpha = p.alpha * 0.6;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * scale, 0, Math.PI*2);
-      ctx.fill();
-      ctx.globalAlpha = 1.0;
-    });
-    
-    // Draw "Asset Nodes" on the top layer (The "Fruits" of the landscape)
-    // Just a few static-ish nodes that ride the top wave
-    const topLayer = this.wmLayers[0];
-    const nodeCount = 3;
-    for(let i=1; i<=nodeCount; i++) {
-      const x = (this.width / (nodeCount + 1)) * i;
-      
-      // Calculate Y for this X on top layer (simplified calculation matching the loop above)
-      const points = 10;
-      const step = this.width / points;
-      const idx = x / step; // Float index
-      
-      const trend = (idx / points) * (40 * scale);
-      const baseHeight = this.height * 0.7 - trend;
-      const wave = Math.sin((idx * 0.5) + (time * topLayer.speed)) * (topLayer.amplitude * scale);
-      const wave2 = Math.cos((idx * 0.2) + (time * topLayer.speed * 0.5)) * (topLayer.amplitude * 0.5 * scale);
-      const mouseEffect = Math.max(0, (1 - Math.abs(this.mouse.x - x) / (200 * scale))) * (20 * scale);
-      const y = baseHeight + wave + wave2 - mouseEffect;
-      
-      // Draw Node
-      ctx.fillStyle = '#fff';
-      ctx.beginPath();
-      ctx.arc(x, y, 3 * scale, 0, Math.PI*2);
-      ctx.fill();
-      
-      // Label line
-      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x, y - 20 * scale);
-      ctx.stroke();
-      
-      // Label dot
-      ctx.fillStyle = this.colors.accent;
-      ctx.beginPath();
-      ctx.arc(x, y - 20 * scale, 1.5 * scale, 0, Math.PI*2);
-      ctx.fill();
+    for (let y = 0; y < this.height; y += gridSize) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(this.width, y); ctx.stroke();
     }
+
+    // Allocation rings
+    this.wmRings.forEach((ring) => {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(t * ring.speed);
+      ctx.setLineDash(ring.dash);
+      ctx.strokeStyle = `rgba(110, 230, 255, ${ring.alpha})`;
+      ctx.lineWidth = ring.width;
+      ctx.beginPath();
+      ctx.arc(0, 0, ring.radius, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    });
+
+    // Connections and asset nodes
+    const orbitRadius = this.wmRings[1].radius; // Align with outer ring
+    
+    this.wmAssets.forEach((asset, idx) => {
+      // Calculate position - Slow rotation
+      const angle = asset.baseAngle + t * this.wmOrbitSpeed;
+      const ax = cx + Math.cos(angle) * orbitRadius;
+      const ay = cy + Math.sin(angle) * orbitRadius;
+
+      const dx = this.mouse.x - ax;
+      const dy = this.mouse.y - ay;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const hovered = dist < 30 * scale;
+
+      // Connection from core
+      const startX = cx + Math.cos(angle) * (this.wmCore.r + 4 * scale);
+      const startY = cy + Math.sin(angle) * (this.wmCore.r + 4 * scale);
+      
+      ctx.strokeStyle = 'rgba(110, 230, 255, 0.15)';
+      ctx.lineWidth = 1 * scale;
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(ax, ay);
+      ctx.stroke();
+
+      // Flow pulse - Subtle
+      const flow = this.wmFlows[idx];
+      flow.progress += flow.speed;
+      if (flow.progress > 1) flow.progress = 0;
+      const fx = startX + (ax - startX) * flow.progress;
+      const fy = startY + (ay - startY) * flow.progress;
+      
+      ctx.fillStyle = asset.color;
+      ctx.globalAlpha = 0.6;
+      ctx.beginPath();
+      ctx.arc(fx, fy, 1.5 * scale, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1.0;
+
+      // Asset node
+      ctx.fillStyle = '#0a1628';
+      ctx.strokeStyle = hovered ? this.colors.accent : asset.color;
+      ctx.lineWidth = 1.5 * scale;
+      ctx.beginPath();
+      ctx.arc(ax, ay, 8 * scale, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Node label - Clean positioning
+      // Calculate label position based on angle to avoid overlap with center
+      const labelDist = 20 * scale;
+      const lx = ax + Math.cos(angle) * labelDist;
+      const ly = ay + Math.sin(angle) * labelDist;
+      
+      ctx.fillStyle = hovered ? '#fff' : 'rgba(255,255,255,0.9)';
+      ctx.font = `${10 * scale + 1}px "Plus Jakarta Sans", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      // Adjust text alignment based on position relative to center
+      if (Math.abs(Math.cos(angle)) > 0.5) {
+         ctx.textAlign = Math.cos(angle) > 0 ? 'left' : 'right';
+         ctx.fillText(asset.title, ax + (Math.cos(angle) > 0 ? 15 : -15) * scale, ay);
+      } else {
+         ctx.textAlign = 'center';
+         ctx.textBaseline = Math.sin(angle) > 0 ? 'top' : 'bottom';
+         ctx.fillText(asset.title, ax, ay + (Math.sin(angle) > 0 ? 15 : -15) * scale);
+      }
+    });
+
+    // Core hub
+    const coreGrad = ctx.createRadialGradient(cx, cy, this.wmCore.r * 0.2, cx, cy, this.wmCore.r);
+    coreGrad.addColorStop(0, 'rgba(8, 145, 178, 0.2)');
+    coreGrad.addColorStop(1, 'rgba(8, 145, 178, 0.05)');
+    ctx.fillStyle = coreGrad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, this.wmCore.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = this.colors.accent;
+    ctx.lineWidth = 1 * scale;
+    ctx.beginPath();
+    ctx.arc(cx, cy, this.wmCore.r, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Core Symbol ($)
+    ctx.fillStyle = this.colors.accent;
+    ctx.font = `600 ${18 * scale}px "Plus Jakarta Sans", sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('$', cx, cy + 1 * scale);
   }
 
   animate() {
