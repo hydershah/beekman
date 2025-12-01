@@ -1768,10 +1768,18 @@ ul {
     gap: 8px;
   }
 
+  .main-nav .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   .main-nav .nav-dropdown-content {
     display: none;
-    position: static;
-    transform: none;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
     background: transparent;
     border: none;
     box-shadow: none;
@@ -1780,6 +1788,11 @@ ul {
     opacity: 1;
     visibility: visible;
     width: 100%;
+  }
+
+  .main-nav .nav-dropdown-content::before,
+  .main-nav .nav-dropdown-content::after {
+    display: none;
   }
 
   .main-nav .nav-dropdown.expanded .nav-dropdown-content {
@@ -1799,6 +1812,7 @@ ul {
     padding: 8px 24px;
     text-align: center;
     white-space: nowrap;
+    width: auto;
   }
 
   .main-nav .nav-dropdown-content a:hover {
