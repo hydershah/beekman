@@ -2,6 +2,7 @@
  * Services Animations - Beekman Strategic
  * Handles interactive canvas animations for service pages
  * Refined for professional, subtle, and relevant visuals
+ * Mobile-optimized with touch support and responsive scaling
  */
 
 class ServiceAnimation {
@@ -58,6 +59,24 @@ class ServiceAnimation {
       this.isHovering = false;
     });
 
+    // Touch support
+    this.canvas.addEventListener('touchstart', (e) => {
+      const rect = this.canvas.getBoundingClientRect();
+      this.mouse.x = e.touches[0].clientX - rect.left;
+      this.mouse.y = e.touches[0].clientY - rect.top;
+      this.isHovering = true;
+    }, { passive: true });
+
+    this.canvas.addEventListener('touchmove', (e) => {
+      const rect = this.canvas.getBoundingClientRect();
+      this.mouse.x = e.touches[0].clientX - rect.left;
+      this.mouse.y = e.touches[0].clientY - rect.top;
+    }, { passive: true });
+
+    this.canvas.addEventListener('touchend', () => {
+      this.isHovering = false;
+    });
+
     // Initialize specific animation elements
     if (this.type === 'investment-banking') this.initInvestmentBanking();
     if (this.type === 'fund-structuring') this.initFundStructuring();
@@ -87,11 +106,12 @@ class ServiceAnimation {
   // INVESTMENT BANKING ANIMATION
   // ==========================================
   initInvestmentBanking() {
+    const scale = Math.min(this.width, this.height) / 400;
     // Abstract nodes instead of boxes
     this.ibNodes = [
-      { x: this.width * 0.2, y: this.height * 0.45, r: 6, label: 'Origin', type: 'node' },
-      { x: this.width * 0.8, y: this.height * 0.45, r: 6, label: 'Market', type: 'node' },
-      { x: this.width * 0.5, y: this.height * 0.45, r: 15, label: '', type: 'hub' }
+      { x: this.width * 0.2, y: this.height * 0.45, r: 6 * scale + 2, label: 'Origin', type: 'node' },
+      { x: this.width * 0.8, y: this.height * 0.45, r: 6 * scale + 2, label: 'Market', type: 'node' },
+      { x: this.width * 0.5, y: this.height * 0.45, r: 15 * scale + 5, label: '', type: 'hub' }
     ];
     
     this.ibParticles = [];
@@ -108,6 +128,7 @@ class ServiceAnimation {
   drawInvestmentBanking() {
     const ctx = this.ctx;
     const time = Date.now() * 0.001;
+    const scale = Math.min(this.width, this.height) / 400;
 
     // Background
     const grad = ctx.createLinearGradient(0, 0, 0, this.height);
@@ -119,7 +140,7 @@ class ServiceAnimation {
     // Subtle Grid
     ctx.strokeStyle = this.colors.grid;
     ctx.lineWidth = 0.5;
-    const gridSize = 50;
+    const gridSize = 50 * scale;
     for(let x=0; x<this.width; x+=gridSize) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, this.height); ctx.stroke();
     }
@@ -129,17 +150,17 @@ class ServiceAnimation {
 
     // Draw Main Connection Line (Curve)
     ctx.strokeStyle = this.colors.primaryLow;
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 1 * scale;
     ctx.beginPath();
     ctx.moveTo(this.ibNodes[0].x, this.ibNodes[0].y);
     // Quadratic curve through center
-    ctx.quadraticCurveTo(this.ibNodes[2].x, this.ibNodes[2].y - 20, this.ibNodes[1].x, this.ibNodes[1].y);
+    ctx.quadraticCurveTo(this.ibNodes[2].x, this.ibNodes[2].y - 20 * scale, this.ibNodes[1].x, this.ibNodes[1].y);
     ctx.stroke();
     
     // Mirror curve
     ctx.beginPath();
     ctx.moveTo(this.ibNodes[0].x, this.ibNodes[0].y);
-    ctx.quadraticCurveTo(this.ibNodes[2].x, this.ibNodes[2].y + 20, this.ibNodes[1].x, this.ibNodes[1].y);
+    ctx.quadraticCurveTo(this.ibNodes[2].x, this.ibNodes[2].y + 20 * scale, this.ibNodes[1].x, this.ibNodes[1].y);
     ctx.stroke();
 
     // Draw Particles
@@ -150,7 +171,7 @@ class ServiceAnimation {
       // Calculate position on curve
       const t = p.progress;
       const p0 = this.ibNodes[0];
-      const p1 = { x: this.ibNodes[2].x, y: this.ibNodes[2].y + (p.offset > 0 ? 20 : -20) }; // Control point
+      const p1 = { x: this.ibNodes[2].x, y: this.ibNodes[2].y + (p.offset > 0 ? 20 * scale : -20 * scale) }; // Control point
       const p2 = this.ibNodes[1];
       
       // Quadratic bezier formula
@@ -159,13 +180,13 @@ class ServiceAnimation {
 
       ctx.fillStyle = this.colors.accent;
       ctx.beginPath();
-      ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+      ctx.arc(x, y, 1.5 * scale + 1, 0, Math.PI * 2);
       ctx.fill();
       
       // Trail
       ctx.fillStyle = 'rgba(110, 230, 255, 0.1)';
       ctx.beginPath();
-      ctx.arc(x - (p.speed * 500), y, 1, 0, Math.PI * 2);
+      ctx.arc(x - (p.speed * 500 * scale), y, 1 * scale, 0, Math.PI * 2);
       ctx.fill();
     });
 
@@ -175,12 +196,12 @@ class ServiceAnimation {
       const dx = this.mouse.x - node.x;
       const dy = this.mouse.y - node.y;
       const dist = Math.sqrt(dx*dx + dy*dy);
-      const isHovered = dist < 30;
+      const isHovered = dist < 30 * scale;
       
       if (node.type === 'hub') {
         // Central Hub - Abstract
         ctx.strokeStyle = this.colors.accent;
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 1 * scale;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.r, 0, Math.PI*2);
         ctx.stroke();
@@ -190,9 +211,9 @@ class ServiceAnimation {
         ctx.translate(node.x, node.y);
         ctx.rotate(time * 0.5);
         ctx.strokeStyle = this.colors.primary;
-        ctx.setLineDash([5, 10]);
+        ctx.setLineDash([5 * scale, 10 * scale]);
         ctx.beginPath();
-        ctx.arc(0, 0, node.r + 8, 0, Math.PI*2);
+        ctx.arc(0, 0, node.r + 8 * scale, 0, Math.PI*2);
         ctx.stroke();
         ctx.setLineDash([]);
         ctx.restore();
@@ -200,14 +221,14 @@ class ServiceAnimation {
         // Center dot
         ctx.fillStyle = this.colors.accent;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 3, 0, Math.PI*2);
+        ctx.arc(node.x, node.y, 3 * scale, 0, Math.PI*2);
         ctx.fill();
 
       } else {
         // End Nodes
         ctx.fillStyle = this.colors.bg;
         ctx.strokeStyle = isHovered ? this.colors.accent : this.colors.primary;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1.5 * scale;
         
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.r, 0, Math.PI*2);
@@ -216,9 +237,9 @@ class ServiceAnimation {
         
         // Label
         ctx.fillStyle = isHovered ? this.colors.accent : 'rgba(110, 230, 255, 0.5)';
-        ctx.font = '10px "Plus Jakarta Sans", sans-serif';
+        ctx.font = `${10 * scale + 2}px "Plus Jakarta Sans", sans-serif`;
         ctx.textAlign = 'center';
-        ctx.fillText(node.label, node.x, node.y + 20);
+        ctx.fillText(node.label, node.x, node.y + 20 * scale + 5);
       }
     });
     
@@ -228,22 +249,23 @@ class ServiceAnimation {
 
   drawGraph(x, y) {
     const ctx = this.ctx;
-    const w = 200;
-    const h = 50;
+    const w = this.width * 0.6;
+    const h = this.height * 0.15;
+    const scale = Math.min(this.width, this.height) / 400;
     
     ctx.save();
     ctx.translate(x - w/2, y);
     
     // Base line
     ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = 0.5 * scale;
     ctx.beginPath();
     ctx.moveTo(0, 0); ctx.lineTo(w, 0);
     ctx.stroke();
     
     // Chart Line
     ctx.strokeStyle = this.colors.accent;
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1.5 * scale;
     ctx.beginPath();
     
     const points = 8;
@@ -255,13 +277,13 @@ class ServiceAnimation {
     for(let i=1; i<=points; i++) {
       const px = i * step;
       // Smooth sine wave combination
-      const wave1 = Math.sin(i * 0.8 + time) * 10;
-      const wave2 = Math.cos(i * 0.4 - time * 0.5) * 5;
+      const wave1 = Math.sin(i * 0.8 + time) * (10 * scale);
+      const wave2 = Math.cos(i * 0.4 - time * 0.5) * (5 * scale);
       const py = - (i / points) * h * 0.6 + wave1 + wave2;
       
       // Bezier curve for smoothness
       const prevX = (i-1) * step;
-      const prevY = - ((i-1) / points) * h * 0.6 + Math.sin((i-1) * 0.8 + time) * 10 + Math.cos((i-1) * 0.4 - time * 0.5) * 5;
+      const prevY = - ((i-1) / points) * h * 0.6 + Math.sin((i-1) * 0.8 + time) * (10 * scale) + Math.cos((i-1) * 0.4 - time * 0.5) * (5 * scale);
       
       const cp1x = prevX + step/2;
       const cp1y = prevY;
@@ -307,6 +329,7 @@ class ServiceAnimation {
 
   drawFundStructuring() {
     const ctx = this.ctx;
+    const scale = Math.min(this.width, this.height) / 400;
     
     // Background
     const grad = ctx.createLinearGradient(0, 0, 0, this.height);
@@ -318,7 +341,7 @@ class ServiceAnimation {
     // Architectural Grid
     ctx.strokeStyle = this.colors.grid;
     ctx.lineWidth = 0.5;
-    const gridSize = 40;
+    const gridSize = 40 * scale;
     for(let x=0; x<this.width; x+=gridSize) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, this.height); ctx.stroke();
     }
@@ -352,13 +375,13 @@ class ServiceAnimation {
             
             if (connect) {
               ctx.strokeStyle = this.colors.primaryLow;
-              ctx.lineWidth = 0.5;
+              ctx.lineWidth = 0.5 * scale;
               ctx.beginPath();
               // Right-angle connections
-              ctx.moveTo(x, y + 15);
+              ctx.moveTo(x, y + 15 * scale);
               ctx.lineTo(x, y + (nextY-y)/2);
               ctx.lineTo(nextX, y + (nextY-y)/2);
-              ctx.lineTo(nextX, nextY - 15);
+              ctx.lineTo(nextX, nextY - 15 * scale);
               ctx.stroke();
             }
           });
@@ -377,8 +400,8 @@ class ServiceAnimation {
         node.x = x;
         node.y = y;
         
-        const w = 80;
-        const h = 24;
+        const w = 80 * scale;
+        const h = 24 * scale;
         
         // Check hover
         const dx = this.mouse.x - x;
@@ -387,15 +410,15 @@ class ServiceAnimation {
         
         ctx.fillStyle = this.colors.bg;
         ctx.strokeStyle = isHovered ? this.colors.accent : this.colors.primary;
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 1 * scale;
         
         ctx.beginPath();
-        ctx.roundRect(x - w/2, y - h/2, w, h, 2);
+        ctx.roundRect(x - w/2, y - h/2, w, h, 2 * scale);
         ctx.fill();
         ctx.stroke();
         
         ctx.fillStyle = isHovered ? this.colors.accent : 'rgba(110, 230, 255, 0.7)';
-        ctx.font = '9px "Plus Jakarta Sans", sans-serif';
+        ctx.font = `${9 * scale + 2}px "Plus Jakarta Sans", sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(node.label, x, y);
@@ -430,9 +453,9 @@ class ServiceAnimation {
       if (!targetNode) targetNode = nextLevel.nodes[0];
       
       const sx = sourceNode.x;
-      const sy = sourceNode.y + 12;
+      const sy = sourceNode.y + 12 * scale;
       const tx = targetNode.x;
-      const ty = targetNode.y - 12;
+      const ty = targetNode.y - 12 * scale;
       
       // Right angle path
       let x, y;
@@ -455,7 +478,7 @@ class ServiceAnimation {
       
       ctx.fillStyle = this.colors.accent;
       ctx.beginPath();
-      ctx.arc(x, y, 1.5, 0, Math.PI*2);
+      ctx.arc(x, y, 1.5 * scale + 1, 0, Math.PI*2);
       ctx.fill();
     });
   }
@@ -464,100 +487,198 @@ class ServiceAnimation {
   // WEALTH MANAGEMENT ANIMATION
   // ==========================================
   initWealthManagement() {
-    this.wmAssets = [];
-    const count = 6; // Fewer items
-    for(let i=0; i<count; i++) {
-      this.wmAssets.push({
-        angle: (i / count) * Math.PI * 2,
-        radius: 90 + Math.random() * 30,
-        speed: 0.001 + Math.random() * 0.001, // Very slow orbit
-        size: 2 + Math.random() * 1.5
+    // Concept: "The Financial Landscape" - Accumulation and Growth
+    // Stacked, flowing waves representing the growth of a diversified portfolio over time.
+    // It conveys "Volume", "Stability", and "Smooth Growth".
+    
+    this.wmLayers = [];
+    const layerCount = 4;
+    
+    for(let i=0; i<layerCount; i++) {
+      this.wmLayers.push({
+        offset: i * 20, // Vertical offset
+        speed: 0.0005 + (i * 0.0002), // Different speeds for parallax
+        amplitude: 15 + (i * 5), // Wave height
+        color: i === 0 ? this.colors.accent : this.colors.primary, // Top layer is accent
+        alpha: 0.1 + (i * 0.15), // Bottom layers are more opaque
+        points: [] // Will be populated in draw
+      });
+    }
+    
+    // "Milestone" particles floating above the landscape
+    this.wmParticles = [];
+    for(let i=0; i<5; i++) {
+      this.wmParticles.push({
+        x: Math.random() * this.width,
+        y: Math.random() * (this.height * 0.5),
+        r: Math.random() * 2 + 1,
+        speedY: -0.2 - Math.random() * 0.3,
+        alpha: Math.random()
       });
     }
   }
 
   drawWealthManagement() {
     const ctx = this.ctx;
-    const cx = this.width / 2;
-    const cy = this.height / 2;
-    const time = Date.now() * 0.001;
+    const time = Date.now();
+    const scale = Math.min(this.width, this.height) / 400;
 
     // Background
-    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, this.width/2);
-    grad.addColorStop(0, '#1a2234');
-    grad.addColorStop(1, '#0a1628');
+    const grad = ctx.createLinearGradient(0, 0, 0, this.height);
+    grad.addColorStop(0, '#0a1628');
+    grad.addColorStop(1, '#1a2234');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, this.width, this.height);
 
-    // Central Core (Citadel) - Concentric Rings
-    ctx.save();
-    ctx.translate(cx, cy);
-    
-    // Outer faint ring
-    ctx.strokeStyle = this.colors.primaryLow;
-    ctx.lineWidth = 0.5;
-    ctx.beginPath(); ctx.arc(0, 0, 40, 0, Math.PI*2); ctx.stroke();
-    
-    // Inner ring rotating slowly
-    ctx.rotate(time * 0.1);
-    ctx.strokeStyle = this.colors.primary;
+    // Draw Grid (Subtle background structure)
+    ctx.strokeStyle = 'rgba(110, 230, 255, 0.03)';
     ctx.lineWidth = 1;
-    ctx.setLineDash([10, 20]);
-    ctx.beginPath(); ctx.arc(0, 0, 25, 0, Math.PI*2); ctx.stroke();
-    ctx.setLineDash([]);
-    
-    // Core dot
-    ctx.fillStyle = this.colors.accent;
-    ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI*2); ctx.fill();
-    
-    ctx.restore();
+    const gridSize = 40 * scale;
+    for(let x=0; x<this.width; x+=gridSize) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, this.height); ctx.stroke();
+    }
 
-    // Orbit Paths (Faint)
-    ctx.strokeStyle = 'rgba(110, 230, 255, 0.02)';
-    ctx.lineWidth = 0.5;
-    ctx.beginPath(); ctx.arc(cx, cy, 90, 0, Math.PI*2); ctx.stroke();
-    ctx.beginPath(); ctx.arc(cx, cy, 120, 0, Math.PI*2); ctx.stroke();
+    // Draw Stacked Waves (Back to Front)
+    // We draw from the last layer (furthest back/bottom) to the first (top)
+    // Actually, usually back layers are drawn first.
+    // Let's say layer[3] is the big background one, layer[0] is the sharp foreground one.
+    
+    this.wmLayers.slice().reverse().forEach((layer, index) => {
+      // Actual index in original array
+      const originalIndex = this.wmLayers.length - 1 - index;
+      
+      ctx.beginPath();
+      ctx.moveTo(0, this.height); // Start bottom left
 
-    // Orbiting Assets (Constellation style)
-    this.wmAssets.forEach(asset => {
-      asset.angle += asset.speed;
+      const points = 10;
+      const step = this.width / points;
       
-      // Mouse interaction: Slow down or slight push
-      const ax = cx + Math.cos(asset.angle) * asset.radius;
-      const ay = cy + Math.sin(asset.angle) * asset.radius;
-      
-      const dx = this.mouse.x - ax;
-      const dy = this.mouse.y - ay;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      
-      // If hovered, draw connection to mouse
-      if (dist < 60) {
-        ctx.strokeStyle = 'rgba(110, 230, 255, 0.2)';
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.moveTo(ax, ay);
-        ctx.lineTo(this.mouse.x, this.mouse.y);
-        ctx.stroke();
+      // Generate wave points
+      for(let i=0; i<=points; i++) {
+        const x = i * step;
+        // Base height rises slightly from left to right (Growth trend)
+        const trend = (i / points) * (40 * scale); 
+        const baseHeight = this.height * 0.7 - (originalIndex * 30 * scale) - trend;
         
-        // Highlight asset
-        ctx.fillStyle = '#fff';
-      } else {
-        ctx.fillStyle = this.colors.accent;
+        // Sine wave motion
+        const wave = Math.sin((i * 0.5) + (time * layer.speed)) * (layer.amplitude * scale);
+        const wave2 = Math.cos((i * 0.2) + (time * layer.speed * 0.5)) * (layer.amplitude * 0.5 * scale);
+        
+        // Mouse interaction (Repel/Attract)
+        const dx = this.mouse.x - x;
+        const dist = Math.abs(dx);
+        const mouseEffect = Math.max(0, (1 - dist / (200 * scale))) * (20 * scale);
+        
+        const y = baseHeight + wave + wave2 - mouseEffect;
+        
+        // Smooth curve
+        if (i === 0) {
+          ctx.lineTo(x, y);
+        } else {
+          // Simple smoothing (could be better with bezier, but lineTo with high point count is okay for this style)
+          // Let's use quadratic for better smoothness with fewer points
+          const prevX = (i-1) * step;
+          // We need to store previous Y. 
+          // For simplicity in this loop, let's just use high point count or simple lineTo.
+          // Actually, let's use the bezier helper logic from before if we want super smooth.
+          // But here, let's just do a simple curve.
+          
+          // Re-calculate prevY for the curve control
+          const prevTrend = ((i-1) / points) * (40 * scale);
+          const prevBase = this.height * 0.7 - (originalIndex * 30 * scale) - prevTrend;
+          const prevWave = Math.sin(((i-1) * 0.5) + (time * layer.speed)) * (layer.amplitude * scale);
+          const prevWave2 = Math.cos(((i-1) * 0.2) + (time * layer.speed * 0.5)) * (layer.amplitude * 0.5 * scale);
+          const prevMouse = Math.max(0, (1 - Math.abs(this.mouse.x - prevX) / (200 * scale))) * (20 * scale);
+          const prevY = prevBase + prevWave + prevWave2 - prevMouse;
+
+          const cpX = (prevX + x) / 2;
+          const cpY = (prevY + y) / 2;
+          ctx.quadraticCurveTo(prevX, prevY, cpX, cpY);
+          
+          if (i === points) ctx.lineTo(x, y); // Finish
+        }
       }
 
-      // Draw Asset Dot
-      ctx.beginPath();
-      ctx.arc(ax, ay, asset.size, 0, Math.PI*2);
+      ctx.lineTo(this.width, this.height); // Bottom right
+      ctx.closePath();
+
+      // Fill
+      const fillGrad = ctx.createLinearGradient(0, 0, 0, this.height);
+      fillGrad.addColorStop(0, layer.color);
+      fillGrad.addColorStop(1, 'rgba(10, 22, 40, 0)'); // Fade to transparent
+      
+      ctx.fillStyle = fillGrad;
+      ctx.globalAlpha = layer.alpha;
       ctx.fill();
       
-      // Connection to center (Constellation line)
-      ctx.strokeStyle = 'rgba(110, 230, 255, 0.05)';
-      ctx.lineWidth = 0.5;
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(ax, ay);
+      // Stroke top edge
+      ctx.strokeStyle = layer.color;
+      ctx.lineWidth = 1.5 * scale;
+      ctx.globalAlpha = 0.8;
       ctx.stroke();
+      ctx.globalAlpha = 1.0;
     });
+
+    // Draw "Growth Particles" (Rising bubbles)
+    this.wmParticles.forEach(p => {
+      p.y += p.speedY * scale;
+      p.alpha -= 0.005;
+      
+      // Reset if off screen or invisible
+      if (p.y < 0 || p.alpha <= 0) {
+        p.y = this.height * 0.7 + Math.random() * 50;
+        p.x = Math.random() * this.width;
+        p.alpha = 1;
+        p.speedY = -0.2 - Math.random() * 0.3;
+      }
+      
+      ctx.fillStyle = this.colors.accent;
+      ctx.globalAlpha = p.alpha * 0.6;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * scale, 0, Math.PI*2);
+      ctx.fill();
+      ctx.globalAlpha = 1.0;
+    });
+    
+    // Draw "Asset Nodes" on the top layer (The "Fruits" of the landscape)
+    // Just a few static-ish nodes that ride the top wave
+    const topLayer = this.wmLayers[0];
+    const nodeCount = 3;
+    for(let i=1; i<=nodeCount; i++) {
+      const x = (this.width / (nodeCount + 1)) * i;
+      
+      // Calculate Y for this X on top layer (simplified calculation matching the loop above)
+      const points = 10;
+      const step = this.width / points;
+      const idx = x / step; // Float index
+      
+      const trend = (idx / points) * (40 * scale);
+      const baseHeight = this.height * 0.7 - trend;
+      const wave = Math.sin((idx * 0.5) + (time * topLayer.speed)) * (topLayer.amplitude * scale);
+      const wave2 = Math.cos((idx * 0.2) + (time * topLayer.speed * 0.5)) * (topLayer.amplitude * 0.5 * scale);
+      const mouseEffect = Math.max(0, (1 - Math.abs(this.mouse.x - x) / (200 * scale))) * (20 * scale);
+      const y = baseHeight + wave + wave2 - mouseEffect;
+      
+      // Draw Node
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(x, y, 3 * scale, 0, Math.PI*2);
+      ctx.fill();
+      
+      // Label line
+      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y - 20 * scale);
+      ctx.stroke();
+      
+      // Label dot
+      ctx.fillStyle = this.colors.accent;
+      ctx.beginPath();
+      ctx.arc(x, y - 20 * scale, 1.5 * scale, 0, Math.PI*2);
+      ctx.fill();
+    }
   }
 
   animate() {

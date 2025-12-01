@@ -1841,30 +1841,30 @@ ul {
     align-items: center;
   }
 
-  /* Simplified hero visual on mobile - scaled down but present */
+  /* Simplified hero visual on mobile - scaled up for better visibility */
   .hero-visual {
-    min-height: 180px;
-    max-height: 200px;
+    min-height: 220px;
+    max-height: 260px;
     margin-bottom: 32px;
     order: -1; /* Move above content */
   }
 
   .hero-rings {
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
   }
 
   .hero-center {
-    inset: 48px;
+    inset: 70px;
   }
 
   .hero-center-icon {
-    font-size: 36px;
+    font-size: 42px;
   }
 
   .hero-orb {
-    width: 180px;
-    height: 180px;
+    width: 240px;
+    height: 240px;
     filter: blur(40px); /* Lighter blur for performance */
   }
 
