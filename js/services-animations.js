@@ -199,30 +199,36 @@ class ServiceAnimation {
       const isHovered = dist < 30 * scale;
       
       if (node.type === 'hub') {
-        // Central Hub - Abstract
-        ctx.strokeStyle = this.colors.accent;
-        ctx.lineWidth = 1 * scale;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.r, 0, Math.PI*2);
-        ctx.stroke();
+        // Central Hub - Beekman "B"
         
-        // Inner rotating ring
+        // Outer rotating ring
         ctx.save();
         ctx.translate(node.x, node.y);
         ctx.rotate(time * 0.5);
         ctx.strokeStyle = this.colors.primary;
         ctx.setLineDash([5 * scale, 10 * scale]);
+        ctx.lineWidth = 1 * scale;
         ctx.beginPath();
-        ctx.arc(0, 0, node.r + 8 * scale, 0, Math.PI*2);
+        ctx.arc(0, 0, node.r + 6 * scale, 0, Math.PI*2);
         ctx.stroke();
         ctx.setLineDash([]);
         ctx.restore();
         
-        // Center dot
-        ctx.fillStyle = this.colors.accent;
+        // Circle container
+        ctx.fillStyle = 'rgba(10, 22, 40, 0.9)';
+        ctx.strokeStyle = this.colors.accent;
+        ctx.lineWidth = 1.5 * scale;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 3 * scale, 0, Math.PI*2);
+        ctx.arc(node.x, node.y, node.r, 0, Math.PI*2);
         ctx.fill();
+        ctx.stroke();
+        
+        // The "B"
+        ctx.fillStyle = this.colors.accent;
+        ctx.font = `800 ${24 * scale}px "Plus Jakarta Sans", sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('B', node.x, node.y + 2 * scale);
 
       } else {
         // End Nodes
@@ -662,12 +668,12 @@ class ServiceAnimation {
     ctx.arc(cx, cy, this.wmCore.r, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Core Symbol ($)
+    // Core Symbol (B)
     ctx.fillStyle = this.colors.accent;
-    ctx.font = `600 ${18 * scale}px "Plus Jakarta Sans", sans-serif`;
+    ctx.font = `800 ${24 * scale}px "Plus Jakarta Sans", sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('$', cx, cy + 1 * scale);
+    ctx.fillText('B', cx, cy + 2 * scale);
   }
 
   animate() {
