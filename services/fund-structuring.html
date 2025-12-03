@@ -29,8 +29,11 @@
   <header id="header">
     <div class="container header-inner">
       <a href="../" class="logo">
-        <span class="logo-mark"></span>
-        <span class="logo-text">Beekman Strategic</span>
+        <span class="logo-main">
+          <span class="logo-mark"></span>
+          <span class="logo-text">Beekman Strategic</span>
+        </span>
+        <span class="logo-tagline" data-i18n="header.tagline">Tradition Meets Innovation</span>
       </a>
 
       <nav class="main-nav" id="mainNav">
@@ -106,7 +109,7 @@
             <span class="text-muted">Architecture</span>
           </h2>
           <p class="section-desc" data-i18n="services.s3.desc">
-            Vehicle architecture for SPVs, LPs, LLPs, and bespoke frameworks. Capital raise support, launch coordination, and ongoing advisory for institutional-grade products.
+            Vehicle architecture for SPVs, LPs, ETPs, and bespoke frameworks. Capital raise support, launch coordination, and ongoing advisory for institutional-grade products.
           </p>
           <p class="section-desc">
             We design and implement sophisticated investment vehicles that meet institutional standards while providing the flexibility and control that private clients demand.
@@ -310,7 +313,7 @@
             <span class="text-muted">Beekman AI</span>
           </h2>
           <p class="section-desc" data-i18n="services.s4.desc">
-            Proprietary AI solutions that modernize the structuring process—ensuring speed, accuracy, and a seamless digital experience. From months to days.
+            Proprietary AI solutions with human oversight that modernize the structuring process, ensuring speed, accuracy, and a seamless digital experience. Taking go to market from months to days.
           </p>
           <ul class="feature-list">
             <li>AI-powered legal document generation and review</li>
@@ -321,11 +324,10 @@
         </div>
         <div class="section-visual reveal">
           <div class="globe-card">
-            <div class="service-icon" style="width: 160px; height: 160px; margin: 0 auto;">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 8V4H8"/><rect x="5" y="8" width="14" height="12" rx="2"/><path d="M9 12h0"/><path d="M15 12h0"/><path d="M10 16h4"/>
-              </svg>
+            <div class="globe-container">
+              <canvas id="globeCanvas" class="globe-canvas"></canvas>
             </div>
+            <span class="globe-label">Global Reach</span>
           </div>
         </div>
       </div>
@@ -348,22 +350,33 @@
           <span class="service-num">01</span>
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/>
             </svg>
           </div>
-          <h3 data-i18n="clients.c4.title">International Clients</h3>
-          <p data-i18n="clients.c4.desc">Families in Latin America and Europe seeking access to US markets, currency hedging, and political risk mitigation.</p>
+          <h3>Real Estate Sponsors & Developers</h3>
+          <p>Real estate sponsors and developers looking to professionalize the way they raise capital with institutional-grade fund structures and investor-ready vehicles.</p>
         </div>
 
         <div class="service-card reveal">
           <span class="service-num">02</span>
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <h3 data-i18n="clients.c2.title">Entrepreneurs & Business Owners</h3>
-          <p data-i18n="clients.c2.desc">Visionaries seeking pre-liquidity planning, securitization of business assets, and strategic capital raising.</p>
+          <h3>Fund Structuring Clients</h3>
+          <p>Clients requiring sophisticated fund architecture, vehicle formation, and ongoing governance support across multiple jurisdictions.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <span class="service-num">03</span>
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+            </svg>
+          </div>
+          <h3>Entrepreneurs</h3>
+          <p>Entrepreneurs looking for pre-IPO solutions with strategic capital positioning through European exchanges and alternative listing pathways.</p>
         </div>
       </div>
     </div>
@@ -392,7 +405,7 @@
         <div class="process-step reveal">
           <div class="step-marker">02</div>
           <h3 data-i18n="process.step2.title">Jurisdiction Analysis</h3>
-          <p data-i18n="process.step2.desc">We select the optimal domicile—Delaware, Luxembourg, UK, Switzerland—based on your specific goals and circumstances.</p>
+          <p data-i18n="process.step2.desc">We select the optimal domicile (Delaware, Luxembourg, UK, Switzerland) based on your specific goals and circumstances.</p>
         </div>
         <div class="process-step reveal">
           <div class="step-marker">03</div>
@@ -431,7 +444,7 @@
             <span class="logo-mark"></span>
             <span class="logo-text">Beekman Strategic</span>
           </a>
-          <p data-i18n="footer.desc">Independent financial advisory and investment banking. Tradition meets innovation—where goals become reality.</p>
+          <p data-i18n="footer.desc">Independent financial advisory and investment banking. Tradition meets innovation, where goals become reality.</p>
         </div>
 
         <div class="footer-col">
@@ -507,6 +520,7 @@
   <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/services-animations.js"></script>
+  <script type="module" src="../js/globe.js"></script>
 
   <!-- Cookie Consent Script -->
   <script>
