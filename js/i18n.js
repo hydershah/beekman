@@ -1,12 +1,15 @@
 /**
  * Internationalization (i18n) Module
  * Supports: English, Spanish, French, Portuguese
- * Version: 2.0.1
+ * Version: 2.1.0
  */
-console.log('[i18n] Loading version 2.0.1');
+console.log('[i18n] Loading version 2.1.0');
 
 const translations = {
   en: {
+    // Header
+    'header.tagline': 'Tradition Meets Innovation',
+
     // Navigation
     'nav.home': 'Home',
     'nav.about': 'About Us',
@@ -18,10 +21,9 @@ const translations = {
     'nav.portal': 'Client Portal',
 
     // Hero
-    'hero.eyebrow': 'Tradition Meets Innovation',
     'hero.title1': 'Where Goals',
     'hero.title2': 'Become Reality.',
-    'hero.subtitle': 'Independent financial advisory and investment banking for the global elite. We translate your ambition into executable financial structures.',
+    'hero.subtitle': 'Independent financial advisory and investment banking boutique. We translate your ambition into executable financial structures.',
     'hero.cta1': 'Schedule a Consultation',
     'hero.cta2': 'Explore Our Services',
     'hero.stat1': 'Structured Products',
@@ -80,9 +82,9 @@ const translations = {
     'services.s2.desc': 'Bespoke financial instruments, liquidity solutions, capital markets advisory, and asset transformation. Turning illiquid assets into bankable securities.',
     'services.s3.title': 'Fund & Vehicle Structuring',
     'services.s3.tagline': 'Engineering institutional-grade products.',
-    'services.s3.desc': 'Vehicle architecture for SPVs, LPs, LLPs, and bespoke frameworks. Capital raise support, launch coordination, and ongoing advisory for institutional-grade products.',
+    'services.s3.desc': 'Vehicle architecture for SPVs, LPs, ETP (Exchange Traded Products), and bespoke frameworks. Capital raise support, launch coordination, and ongoing advisory for institutional-grade products.',
     'services.s4.title': 'Powered by Beekman AI',
-    'services.s4.desc': 'Proprietary AI solutions that modernize the structuring process—ensuring speed, accuracy, and a seamless digital experience. From months to days.',
+    'services.s4.desc': 'Proprietary AI solutions with human oversight that modernize the structuring process - ensuring speed, accuracy, and a seamless digital experience. Taking go to market from months to days.',
 
     // Process / Expertise
     'process.label': 'Our Approach',
@@ -106,8 +108,8 @@ const translations = {
 
     // Why Us / Philosophy
     'why.label': 'Our Philosophy',
-    'why.title1': 'Human oversight',
-    'why.title2': 'on a digital machine',
+    'why.title1': 'Human Oversight',
+    'why.title2': 'on an AI powered solution',
     'why.card1.title': 'Principal-Led Execution',
     'why.card1.desc': 'Clients work directly with senior operators, not junior associates. Direct accountability and institutional expertise from the first conversation to final implementation.',
     'why.card2.title': 'AI-Enhanced Efficiency',
@@ -125,8 +127,8 @@ const translations = {
     'cases.case1.desc': 'Structured carbon credit emissions from the Colombian Amazon into a Swiss-listed bond, creating a liquid, institutional-grade security from an environmental asset. A landmark transaction bridging sustainability and capital markets.',
     'cases.case1.location': 'Colombia → Switzerland',
     'cases.case2.tag': 'Social Impact',
-    'cases.case2.title': 'Free Trade Zone Healthcare Clinic',
-    'cases.case2.desc': 'Structured and launched a healthcare facility within a Colombian Free Trade Zone, serving over 1.3 million people. Demonstrated how sophisticated structuring can drive both returns and meaningful social impact.',
+    'cases.case2.title': 'Free Trade Zone Healthcare Cluster',
+    'cases.case2.desc': 'Structured and launched a $100M+ healthcare cluster within a Colombian Free Trade Zone, serving over 1.3 million people. Demonstrated how sophisticated structuring can drive both returns and meaningful social impact.',
     'cases.case2.location': 'Colombia',
 
     // Insights
@@ -188,6 +190,9 @@ const translations = {
   },
 
   es: {
+    // Header
+    'header.tagline': 'Tradición e Innovación',
+
     // Navigation
     'nav.home': 'Inicio',
     'nav.about': 'Nosotros',
@@ -199,10 +204,9 @@ const translations = {
     'nav.portal': 'Portal de Cliente',
 
     // Hero
-    'hero.eyebrow': 'Tradición e Innovación',
     'hero.title1': 'Donde los Objetivos',
     'hero.title2': 'Se Hacen Realidad.',
-    'hero.subtitle': 'Asesoría financiera independiente y banca de inversión para la élite global. Traducimos su ambición en estructuras financieras ejecutables.',
+    'hero.subtitle': 'Asesoría financiera independiente y banca de inversión boutique. Traducimos su ambición en estructuras financieras ejecutables.',
     'hero.cta1': 'Agendar una Consulta',
     'hero.cta2': 'Explorar Servicios',
     'hero.stat1': 'Productos Estructurados',
@@ -261,9 +265,9 @@ const translations = {
     'services.s2.desc': 'Instrumentos financieros a medida, soluciones de liquidez, asesoría en mercados de capitales y transformación de activos. Convirtiendo activos ilíquidos en valores bancables.',
     'services.s3.title': 'Estructuración de Fondos y Vehículos',
     'services.s3.tagline': 'Diseñando productos de grado institucional.',
-    'services.s3.desc': 'Arquitectura de vehículos para SPVs, LPs, LLPs y marcos a medida. Apoyo en levantamiento de capital, coordinación de lanzamiento y asesoría continua para productos de grado institucional.',
+    'services.s3.desc': 'Arquitectura de vehículos para SPVs, LPs, ETP (Exchange Traded Products) y marcos a medida. Apoyo en levantamiento de capital, coordinación de lanzamiento y asesoría continua para productos de grado institucional.',
     'services.s4.title': 'Impulsado por Beekman AI',
-    'services.s4.desc': 'Soluciones propietarias de IA que modernizan el proceso de estructuración—garantizando velocidad, precisión y una experiencia digital fluida. De meses a días.',
+    'services.s4.desc': 'Soluciones propietarias de IA con supervisión humana que modernizan el proceso de estructuración - garantizando velocidad, precisión y una experiencia digital fluida. Llevando el lanzamiento al mercado de meses a días.',
 
     // Process / Expertise
     'process.label': 'Nuestro Enfoque',
@@ -287,8 +291,8 @@ const translations = {
 
     // Why Us / Philosophy
     'why.label': 'Nuestra Filosofía',
-    'why.title1': 'Supervisión humana',
-    'why.title2': 'sobre una máquina digital',
+    'why.title1': 'Supervisión Humana',
+    'why.title2': 'sobre una solución impulsada por IA',
     'why.card1.title': 'Ejecución Liderada por Principales',
     'why.card1.desc': 'Los clientes trabajan directamente con operadores senior, no con asociados junior. Responsabilidad directa y experiencia institucional desde la primera conversación hasta la implementación final.',
     'why.card2.title': 'Eficiencia Mejorada por IA',
@@ -306,8 +310,8 @@ const translations = {
     'cases.case1.desc': 'Estructuramos emisiones de créditos de carbono del Amazonas colombiano en un bono listado en Suiza, creando un valor líquido de grado institucional a partir de un activo ambiental. Una transacción emblemática que conecta sostenibilidad y mercados de capitales.',
     'cases.case1.location': 'Colombia → Suiza',
     'cases.case2.tag': 'Impacto Social',
-    'cases.case2.title': 'Clínica de Zona Franca',
-    'cases.case2.desc': 'Estructuramos y lanzamos una instalación de salud dentro de una Zona Franca colombiana, sirviendo a más de 1.3 millones de personas. Demostramos cómo la estructuración sofisticada puede generar tanto retornos como impacto social significativo.',
+    'cases.case2.title': 'Clúster de Salud en Zona Franca',
+    'cases.case2.desc': 'Estructuramos y lanzamos un clúster de salud de $100M+ dentro de una Zona Franca colombiana, sirviendo a más de 1.3 millones de personas. Demostramos cómo la estructuración sofisticada puede generar tanto retornos como impacto social significativo.',
     'cases.case2.location': 'Colombia',
 
     // Insights
@@ -369,6 +373,9 @@ const translations = {
   },
 
   fr: {
+    // Header
+    'header.tagline': 'Tradition et Innovation',
+
     // Navigation
     'nav.home': 'Accueil',
     'nav.about': 'La Firme',
@@ -380,10 +387,9 @@ const translations = {
     'nav.portal': 'Portail Client',
 
     // Hero
-    'hero.eyebrow': 'Tradition et Innovation',
     'hero.title1': 'Où les Objectifs',
     'hero.title2': 'Deviennent Réalité.',
-    'hero.subtitle': 'Conseil financier indépendant et banque d\'investissement pour l\'élite mondiale. Nous traduisons votre ambition en structures financières exécutables.',
+    'hero.subtitle': 'Conseil financier indépendant et banque d\'investissement boutique. Nous traduisons votre ambition en structures financières exécutables.',
     'hero.cta1': 'Planifier une Consultation',
     'hero.cta2': 'Explorer Nos Services',
     'hero.stat1': 'Produits Structurés',
@@ -442,9 +448,9 @@ const translations = {
     'services.s2.desc': 'Instruments financiers sur mesure, solutions de liquidité, conseil en marchés de capitaux et transformation d\'actifs. Transformer les actifs illiquides en titres bancables.',
     'services.s3.title': 'Structuration de Fonds et Véhicules',
     'services.s3.tagline': 'Concevoir des produits de qualité institutionnelle.',
-    'services.s3.desc': 'Architecture de véhicules pour SPVs, LPs, LLPs et cadres sur mesure. Soutien à la levée de capitaux, coordination de lancement et conseil continu pour des produits de qualité institutionnelle.',
+    'services.s3.desc': 'Architecture de véhicules pour SPVs, LPs, ETP (Exchange Traded Products) et cadres sur mesure. Soutien à la levée de capitaux, coordination de lancement et conseil continu pour des produits de qualité institutionnelle.',
     'services.s4.title': 'Propulsé par Beekman AI',
-    'services.s4.desc': 'Solutions IA propriétaires qui modernisent le processus de structuration—garantissant rapidité, précision et une expérience digitale fluide. De mois à jours.',
+    'services.s4.desc': 'Solutions IA propriétaires avec supervision humaine qui modernisent le processus de structuration - garantissant rapidité, précision et une expérience digitale fluide. Réduisant le délai de mise sur le marché de mois à jours.',
 
     // Process / Expertise
     'process.label': 'Notre Approche',
@@ -468,8 +474,8 @@ const translations = {
 
     // Why Us / Philosophy
     'why.label': 'Notre Philosophie',
-    'why.title1': 'Supervision humaine',
-    'why.title2': 'sur une machine digitale',
+    'why.title1': 'Supervision Humaine',
+    'why.title2': 'sur une solution propulsée par l\'IA',
     'why.card1.title': 'Exécution par les Principaux',
     'why.card1.desc': 'Les clients travaillent directement avec des opérateurs seniors, pas des associés juniors. Responsabilité directe et expertise institutionnelle de la première conversation à la mise en œuvre finale.',
     'why.card2.title': 'Efficacité Améliorée par l\'IA',
@@ -487,8 +493,8 @@ const translations = {
     'cases.case1.desc': 'Nous avons structuré des émissions de crédits carbone de l\'Amazonie colombienne en une obligation cotée en Suisse, créant un titre liquide de qualité institutionnelle à partir d\'un actif environnemental. Une transaction emblématique reliant durabilité et marchés de capitaux.',
     'cases.case1.location': 'Colombie → Suisse',
     'cases.case2.tag': 'Impact Social',
-    'cases.case2.title': 'Clinique de Zone Franche',
-    'cases.case2.desc': 'Nous avons structuré et lancé un établissement de santé dans une Zone Franche colombienne, servant plus de 1,3 million de personnes. Démonstration que la structuration sophistiquée peut générer à la fois des rendements et un impact social significatif.',
+    'cases.case2.title': 'Cluster de Santé en Zone Franche',
+    'cases.case2.desc': 'Nous avons structuré et lancé un cluster de santé de plus de $100M dans une Zone Franche colombienne, servant plus de 1,3 million de personnes. Démonstration que la structuration sophistiquée peut générer à la fois des rendements et un impact social significatif.',
     'cases.case2.location': 'Colombie',
 
     // Insights
@@ -550,6 +556,9 @@ const translations = {
   },
 
   pt: {
+    // Header
+    'header.tagline': 'Tradição e Inovação',
+
     // Navigation
     'nav.home': 'Início',
     'nav.about': 'A Firma',
@@ -561,10 +570,9 @@ const translations = {
     'nav.portal': 'Portal do Cliente',
 
     // Hero
-    'hero.eyebrow': 'Tradição e Inovação',
     'hero.title1': 'Onde Objetivos',
     'hero.title2': 'Se Tornam Realidade.',
-    'hero.subtitle': 'Assessoria financeira independente e banco de investimento para a elite global. Traduzimos sua ambição em estruturas financeiras executáveis.',
+    'hero.subtitle': 'Assessoria financeira independente e banco de investimento boutique. Traduzimos sua ambição em estruturas financeiras executáveis.',
     'hero.cta1': 'Agendar uma Consulta',
     'hero.cta2': 'Explorar Nossos Serviços',
     'hero.stat1': 'Produtos Estruturados',
@@ -623,9 +631,9 @@ const translations = {
     'services.s2.desc': 'Instrumentos financeiros sob medida, soluções de liquidez, assessoria em mercados de capitais e transformação de ativos. Transformando ativos ilíquidos em títulos bancáveis.',
     'services.s3.title': 'Estruturação de Fundos e Veículos',
     'services.s3.tagline': 'Engenharia de produtos de grau institucional.',
-    'services.s3.desc': 'Arquitetura de veículos para SPVs, LPs, LLPs e estruturas sob medida. Suporte em captação de capital, coordenação de lançamento e assessoria contínua para produtos de grau institucional.',
+    'services.s3.desc': 'Arquitetura de veículos para SPVs, LPs, ETP (Exchange Traded Products) e estruturas sob medida. Suporte em captação de capital, coordenação de lançamento e assessoria contínua para produtos de grau institucional.',
     'services.s4.title': 'Impulsionado por Beekman AI',
-    'services.s4.desc': 'Soluções proprietárias de IA que modernizam o processo de estruturação—garantindo velocidade, precisão e uma experiência digital fluida. De meses para dias.',
+    'services.s4.desc': 'Soluções proprietárias de IA com supervisão humana que modernizam o processo de estruturação - garantindo velocidade, precisão e uma experiência digital fluida. Reduzindo o tempo de lançamento ao mercado de meses para dias.',
 
     // Process / Expertise
     'process.label': 'Nossa Abordagem',
@@ -649,8 +657,8 @@ const translations = {
 
     // Why Us / Philosophy
     'why.label': 'Nossa Filosofia',
-    'why.title1': 'Supervisão humana',
-    'why.title2': 'sobre uma máquina digital',
+    'why.title1': 'Supervisão Humana',
+    'why.title2': 'sobre uma solução impulsionada por IA',
     'why.card1.title': 'Execução Liderada por Principais',
     'why.card1.desc': 'Clientes trabalham diretamente com operadores seniores, não associados juniores. Responsabilidade direta e expertise institucional da primeira conversa até a implementação final.',
     'why.card2.title': 'Eficiência Aprimorada por IA',
@@ -668,8 +676,8 @@ const translations = {
     'cases.case1.desc': 'Estruturamos emissões de créditos de carbono da Amazônia colombiana em um título listado na Suíça, criando um valor líquido de grau institucional a partir de um ativo ambiental. Uma transação emblemática conectando sustentabilidade e mercados de capitais.',
     'cases.case1.location': 'Colômbia → Suíça',
     'cases.case2.tag': 'Impacto Social',
-    'cases.case2.title': 'Clínica de Zona Franca',
-    'cases.case2.desc': 'Estruturamos e lançamos uma instalação de saúde dentro de uma Zona Franca colombiana, atendendo mais de 1,3 milhão de pessoas. Demonstramos como a estruturação sofisticada pode gerar tanto retornos quanto impacto social significativo.',
+    'cases.case2.title': 'Cluster de Saúde em Zona Franca',
+    'cases.case2.desc': 'Estruturamos e lançamos um cluster de saúde de $100M+ dentro de uma Zona Franca colombiana, atendendo mais de 1,3 milhão de pessoas. Demonstramos como a estruturação sofisticada pode gerar tanto retornos quanto impacto social significativo.',
     'cases.case2.location': 'Colômbia',
 
     // Insights

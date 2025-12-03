@@ -11,13 +11,13 @@ function initConstellation() {
   let animationId;
   let width, height;
 
-  // Configuration
+  // Configuration - will be adjusted based on canvas size
   const config = {
-    nodeCount: 30,
-    connectionDistance: 120,
+    nodeCount: 12,
+    connectionDistance: 100,
     nodeSpeed: 0.3,
-    centerRadius: 60,
-    labelDistance: 180
+    centerRadius: 45,
+    labelDistance: 140
   };
 
   // Service labels that orbit
@@ -33,16 +33,16 @@ function initConstellation() {
   let nodes = [];
   let labelNodes = [];
 
-  // Get theme colors
+  // Get theme colors - always dark to match other service animations
   function getColors() {
-    const isDark = document.documentElement.dataset.theme === 'dark';
     return {
-      node: isDark ? 'rgba(0, 200, 255, 0.6)' : 'rgba(0, 150, 200, 0.5)',
-      line: isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(0, 150, 200, 0.1)',
-      center: isDark ? 'rgba(0, 200, 255, 0.9)' : 'rgba(0, 150, 200, 0.8)',
-      centerBg: isDark ? 'rgba(20, 30, 40, 0.9)' : 'rgba(255, 255, 255, 0.95)',
-      label: isDark ? 'rgba(245, 247, 250, 0.9)' : 'rgba(30, 40, 50, 0.9)',
-      labelBg: isDark ? 'rgba(30, 40, 50, 0.8)' : 'rgba(255, 255, 255, 0.9)'
+      node: 'rgba(110, 230, 255, 0.6)',
+      line: 'rgba(110, 230, 255, 0.15)',
+      center: '#6ee6ff',
+      centerBg: 'rgba(10, 22, 40, 0.95)',
+      label: 'rgba(255, 255, 255, 0.9)',
+      labelBg: 'rgba(10, 22, 40, 0.85)',
+      labelBorder: 'rgba(110, 230, 255, 0.3)'
     };
   }
 
@@ -50,13 +50,40 @@ function initConstellation() {
   function resize() {
     const container = canvas.parentElement;
     const rect = container.getBoundingClientRect();
-    width = rect.width;
-    height = rect.height;
+    width = rect.width || 400;
+    height = rect.height || 400;
+
+    // Ensure minimum height
+    if (height < 300) {
+      height = 400;
+      container.style.height = height + 'px';
+    }
+
+    // Reset canvas transform before scaling
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+
     canvas.width = width * 2;
     canvas.height = height * 2;
     canvas.style.width = width + 'px';
     canvas.style.height = height + 'px';
     ctx.scale(2, 2);
+
+    // Scale configuration based on available space
+    const minDim = Math.min(width, height);
+    const isMobile = width < 500;
+
+    // More compact layout for mobile
+    if (isMobile) {
+      config.labelDistance = Math.min(90, minDim * 0.30);
+      config.centerRadius = Math.min(30, minDim * 0.10);
+      config.connectionDistance = Math.min(70, minDim * 0.20);
+      config.nodeCount = 6; // Fewer nodes on mobile
+    } else {
+      config.labelDistance = Math.min(160, minDim * 0.38);
+      config.centerRadius = Math.min(50, minDim * 0.12);
+      config.connectionDistance = Math.min(120, minDim * 0.28);
+      config.nodeCount = 12;
+    }
   }
 
   // Create a node
@@ -212,7 +239,8 @@ function initConstellation() {
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    ctx.font = 'bold 36px "Plus Jakarta Sans", sans-serif';
+    const centerFontSize = Math.max(24, config.centerRadius * 0.7);
+    ctx.font = `bold ${centerFontSize}px "Plus Jakarta Sans", sans-serif`;
     ctx.fillStyle = colors.center;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -230,11 +258,13 @@ function initConstellation() {
       ctx.stroke();
       ctx.globalAlpha = 1;
 
-      // Draw label background
-      ctx.font = '11px "Plus Jakarta Sans", sans-serif';
+      // Draw label background - smaller on mobile
+      const isMobile = width < 500;
+      const labelFontSize = isMobile ? Math.max(8, Math.min(9, width * 0.022)) : Math.max(10, Math.min(12, width * 0.018));
+      ctx.font = `500 ${labelFontSize}px "Plus Jakarta Sans", sans-serif`;
       const textWidth = ctx.measureText(node.label).width;
-      const padding = 12;
-      const labelHeight = 28;
+      const padding = isMobile ? Math.max(8, labelFontSize * 1) : Math.max(14, labelFontSize * 1.2);
+      const labelHeight = isMobile ? Math.max(20, labelFontSize * 2.2) : Math.max(28, labelFontSize * 2.8);
 
       ctx.beginPath();
       ctx.roundRect(
@@ -242,11 +272,11 @@ function initConstellation() {
         node.y - labelHeight / 2,
         textWidth + padding * 2,
         labelHeight,
-        14
+        labelHeight / 2
       );
       ctx.fillStyle = colors.labelBg;
       ctx.fill();
-      ctx.strokeStyle = colors.line;
+      ctx.strokeStyle = colors.labelBorder;
       ctx.lineWidth = 1;
       ctx.stroke();
 
