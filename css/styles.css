@@ -2352,9 +2352,9 @@ ul {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 800px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -2379,8 +2379,8 @@ ul {
 }
 
 .team-avatar {
-  width: 64px;
-  height: 64px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
@@ -2388,6 +2388,20 @@ ul {
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
+  overflow: hidden;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Adjust Juan Carlos's image positioning to make face more prominent */
+.team-avatar img[alt="Juan Carlos Palau Olano"] {
+  object-position: center 20%;
+  transform: scale(1.2);
 }
 
 .team-avatar svg {
